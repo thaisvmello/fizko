@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
@@ -7,20 +6,22 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navigation = [
-    { name: "Home", href: "#home" },
-    { name: "Services", href: "#services" },
-    { name: "Purchase", href: "#purchase" },
-    { name: "Assistance", href: "#assistance" },
+    { name: "Início", href: "#home" },
+    { name: "Serviços", href: "#services" },
+    { name: "Produtos", href: "#purchase" },
+    { name: "Chatbot", href: "#assistance" },
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-fizko-beige/95 backdrop-blur-sm border-b border-fizko-blue/20">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-fisko-beige/95 backdrop-blur-sm border-b border-fisko-blue/20">
       <div className="container mx-auto px-4 h-20 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center">
-          <div className="text-2xl font-playfair font-bold text-foreground">
-            FIZK.O
-          </div>
+          <img 
+            src="/lovable-uploads/70578b8b-dd8f-4d27-a553-ba92873fb937.png" 
+            alt="FISK.O Logo" 
+            className="h-12 w-auto"
+          />
         </div>
 
         {/* Desktop Navigation */}
@@ -29,7 +30,7 @@ const Header = () => {
             <a
               key={item.name}
               href={item.href}
-              className="font-montserrat text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              className="font-montserrat text-sm font-medium text-fisko-blue-dark hover:text-fisko-coral transition-colors"
             >
               {item.name}
             </a>
@@ -38,8 +39,8 @@ const Header = () => {
 
         {/* CTA Button */}
         <div className="hidden md:block">
-          <Button className="bg-fizko-coral hover:bg-fizko-coral/90 text-white font-montserrat text-sm px-6">
-            Launch Site
+          <Button className="bg-fisko-coral hover:bg-fisko-coral/90 text-white font-montserrat text-sm px-6">
+            Login Google
           </Button>
         </div>
 
@@ -50,25 +51,25 @@ const Header = () => {
           className="md:hidden"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
-          {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {isMenuOpen ? <X className="h-6 w-6 text-fisko-blue-dark" /> : <Menu className="h-6 w-6 text-fisko-blue-dark" />}
         </Button>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="absolute top-20 left-0 right-0 bg-fizko-beige border-b border-fizko-blue/20 md:hidden">
+          <div className="absolute top-20 left-0 right-0 bg-fisko-beige border-b border-fisko-blue/20 md:hidden">
             <nav className="container mx-auto px-4 py-6 space-y-4">
               {navigation.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="block font-montserrat text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                  className="block font-montserrat text-sm font-medium text-fisko-blue-dark hover:text-fisko-coral transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
                 </a>
               ))}
-              <Button className="w-full bg-fizko-coral hover:bg-fizko-coral/90 text-white font-montserrat text-sm">
-                Launch Site
+              <Button className="w-full bg-fisko-coral hover:bg-fisko-coral/90 text-white font-montserrat text-sm">
+                Login Google
               </Button>
             </nav>
           </div>

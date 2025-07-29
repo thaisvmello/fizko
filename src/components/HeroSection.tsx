@@ -9,40 +9,40 @@ const HeroSection = () => {
           {/* Text Content */}
           <div className="space-y-6">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-playfair font-bold leading-tight">
-              Fiscal solutions{" "}
-              <span className="text-fizko-coral">tailored to you</span>
+              Soluções fiscais{" "}
+              <span className="text-fisko-coral">personalizadas</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground font-montserrat leading-relaxed">
-              Simplify your business finances with our comprehensive spreadsheets, 
-              expert eBooks, and intelligent chatbot assistance. Everything you need 
-              for fiscal management in one place.
+              Acesse tabelas de dados tributários, baixe planilhas personalizadas, 
+              contrate consultoria especializada e use nosso chatbot fiscal inteligente. 
+              Tudo para sua gestão tributária em um só lugar.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
                 size="lg" 
-                className="bg-fizko-coral hover:bg-fizko-coral/90 text-white font-montserrat px-8"
+                className="bg-fisko-coral hover:bg-fisko-coral/90 text-white font-montserrat px-8"
               >
-                Learn More
+                Conhecer Serviços
               </Button>
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="border-fizko-blue text-fizko-blue hover:bg-fizko-blue hover:text-white font-montserrat px-8"
+                className="border-fisko-blue text-fisko-blue hover:bg-fisko-blue hover:text-white font-montserrat px-8"
               >
-                View Services
+                Acessar Tabelas
               </Button>
             </div>
           </div>
 
           {/* Visual Element */}
           <div className="relative">
-            <div className="w-full h-96 bg-gradient-to-br from-fizko-blue/20 to-fizko-coral/20 rounded-3xl flex items-center justify-center">
-              <div className="w-64 h-64 bg-fizko-beige rounded-full shadow-2xl flex items-center justify-center">
-                <div className="w-32 h-32 bg-fizko-coral rounded-lg transform rotate-45 opacity-80"></div>
+            <div className="w-full h-96 bg-gradient-to-br from-fisko-blue/20 to-fisko-coral/20 rounded-3xl flex items-center justify-center">
+              <div className="w-64 h-64 bg-fisko-beige rounded-full shadow-2xl flex items-center justify-center">
+                <div className="w-32 h-32 bg-fisko-coral rounded-lg transform rotate-45 opacity-80"></div>
               </div>
             </div>
-            <div className="absolute -top-4 -right-4 w-16 h-16 bg-fizko-blue rounded-full animate-float"></div>
-            <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-fizko-coral rounded-full animate-float" style={{animationDelay: '1s'}}></div>
+            <div className="absolute -top-4 -right-4 w-16 h-16 bg-fisko-blue rounded-full animate-float"></div>
+            <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-fisko-coral rounded-full animate-float" style={{animationDelay: '1s'}}></div>
           </div>
         </div>
       </div>

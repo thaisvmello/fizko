@@ -1,0 +1,28 @@
+<svg width="200" height="80" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+  <!-- Hexagonal geometric logo -->
+  <g transform="translate(20, 15)">
+    <!-- Outer hexagon -->
+    <polygon points="25,10 35,5 45,10 45,25 35,30 25,25" 
+             fill="#7FA5C2" stroke="#1E2836" stroke-width="1.5"/>
+    
+    <!-- Inner geometric divisions -->
+    <line x1="25" y1="10" x2="45" y2="25" stroke="#1E2836" stroke-width="1"/>
+    <line x1="45" y1="10" x2="25" y2="25" stroke="#1E2836" stroke-width="1"/>
+    <line x1="35" y1="5" x2="35" y2="30" stroke="#1E2836" stroke-width="1"/>
+    <line x1="25" y1="17.5" x2="45" y2="17.5" stroke="#1E2836" stroke-width="1"/>
+    
+    <!-- Central orange point -->
+    <circle cx="35" cy="17.5" r="3" fill="#E85A3F"/>
+    
+    <!-- Outer frame lines -->
+    <line x1="15" y1="17.5" x2="25" y2="17.5" stroke="#1E2836" stroke-width="1"/>
+    <line x1="45" y1="17.5" x2="55" y2="17.5" stroke="#1E2836" stroke-width="1"/>
+    <line x1="35" y1="-5" x2="35" y2="5" stroke="#1E2836" stroke-width="1"/>
+    <line x1="35" y1="30" x2="35" y2="40" stroke="#1E2836" stroke-width="1"/>
+  </g>
+  
+  <!-- Text: fisk.o -->
+  <text x="90" y="50" font-family="serif" font-size="28" font-weight="normal" fill="#1E2836">
+    fisk<tspan fill="#E85A3F">.</tspan>o
+  </text>
+</svg>

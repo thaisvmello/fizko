@@ -3,48 +3,48 @@
 @tailwind components;
 @tailwind utilities;
 
-/* FIZK.O Design System */
+/* FISK.O Design System - Baseado no logo */
 
 @layer base {
   :root {
-    --background: 245 95% 90%; /* #F5E6CC */
-    --foreground: 0 0% 20%; /* #333333 */
+    --background: 40 20% 94%; /* #F0EFEB - Bege claro do logo */
+    --foreground: 210 25% 15%; /* #1E2836 - Azul escuro do texto */
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 20%;
+    --card-foreground: 210 25% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 20%;
+    --popover-foreground: 210 25% 15%;
 
-    --primary: 0 60% 80%; /* #FF9999 */
+    --primary: 200 30% 45%; /* #5A8CAE - Azul acinzentado do logo */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 225 100% 80%; /* #A3BFFA */
-    --secondary-foreground: 0 0% 20%;
+    --secondary: 15 85% 65%; /* #E85A3F - Laranja/coral do ponto */
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 245 95% 90%;
-    --muted-foreground: 0 0% 40%;
+    --muted: 40 20% 94%;
+    --muted-foreground: 210 25% 40%;
 
-    --accent: 225 100% 80%;
-    --accent-foreground: 0 0% 20%;
+    --accent: 200 30% 45%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 225 100% 80%;
-    --input: 225 100% 80%;
-    --ring: 0 60% 80%;
+    --border: 200 20% 80%;
+    --input: 200 20% 85%;
+    --ring: 200 30% 45%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 245 95% 90%;
-    --sidebar-foreground: 0 0% 20%;
-    --sidebar-primary: 0 60% 80%;
+    --sidebar-background: 40 20% 94%;
+    --sidebar-foreground: 210 25% 15%;
+    --sidebar-primary: 200 30% 45%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 225 100% 80%;
-    --sidebar-accent-foreground: 0 0% 20%;
-    --sidebar-border: 225 100% 80%;
-    --sidebar-ring: 0 60% 80%;
+    --sidebar-accent: 15 85% 65%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 200 20% 80%;
+    --sidebar-ring: 200 30% 45%;
   }
 
   .dark {

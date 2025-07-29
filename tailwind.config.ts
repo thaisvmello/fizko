@@ -63,11 +63,13 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// FIZK.O Brand Colors
-				fizko: {
-					beige: '#F5E6CC',
-					blue: '#A3BFFA',
-					coral: '#FF9999'
+				// FISK.O Brand Colors - Baseado no logo
+				fisko: {
+					beige: '#F0EFEB',     // Fundo bege do logo
+					blue: '#5A8CAE',      // Azul acinzentado do hexágono
+					'blue-dark': '#1E2836', // Azul escuro do texto
+					coral: '#E85A3F',     // Laranja/coral do ponto
+					geometric: '#7FA5C2'  // Tom médio do hexágono
 				}
 			},
 			borderRadius: {
