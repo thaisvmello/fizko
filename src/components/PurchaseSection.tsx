@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Database, Download, Users, MessageCircle, Star } from "lucide-react";
+import { supabase } from '@/integrations/supabase/client';
 
 const PurchaseSection = () => {
   const products = [
@@ -46,9 +47,38 @@ const PurchaseSection = () => {
     }
   ];
 
-  const handlePurchase = (productTitle: string) => {
-    console.log(`Purchase initiated for: ${productTitle}`);
-    alert(`Redirecionando para pagamento: ${productTitle}`);
+  const handlePurchase = async (productTitle: string) => {
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) {
+        alert('Você precisa fazer login para realizar uma compra.');
+        return;
+      }
+
+      // Find product details
+      const product = products.find(p => p.title === productTitle);
+      if (!product) return;
+
+      // Convert price string to number
+      const priceMatch = product.price.match(/R\$ ([\d,]+\.?\d*)/);
+      const priceAmount = priceMatch ? parseFloat(priceMatch[1].replace(',', '.')) : 0;
+
+      const { data, error } = await supabase.functions.invoke('create-checkout', {
+        body: {
+          productType: product.type,
+          priceAmount: priceAmount,
+          productName: product.title,
+        }
+      });
+
+      if (error) throw error;
+      
+      // Open Stripe checkout in new tab
+      window.open(data.url, '_blank');
+    } catch (error: any) {
+      console.error('Purchase error:', error);
+      alert('Erro ao iniciar compra. Tente novamente.');
+    }
   };
 
   const handleConsultingForm = () => {
@@ -57,7 +87,7 @@ const PurchaseSection = () => {
   };
 
   return (
-    <section id="purchase" className="py-20 bg-fisko-beige/30">
+    <section id="purchase-section" className="py-20 bg-fisko-beige/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-4">

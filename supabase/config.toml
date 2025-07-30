@@ -1,1 +1,30 @@
 project_id = "sbsaxhigypnuedehejuv"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[auth]
+enabled = true
+port = 54325
+site_url = "http://localhost:3000"
+additional_redirect_urls = ["https://sbsaxhigypnuedehejuv.supabase.co"]
+jwt_expiry = 3600
+refresh_token_rotation_enabled = true
+refresh_token_reuse_interval = 10
+password_min_length = 6
+
+[functions.create-checkout]
+verify_jwt = true
+
+[functions.check-subscription]
+verify_jwt = true
+
+[functions.get-tax-data]
+verify_jwt = true
+
+[functions.customer-portal]
+verify_jwt = true
