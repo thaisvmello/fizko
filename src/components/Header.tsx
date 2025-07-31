@@ -39,8 +39,8 @@ const Header = () => {
 
         {/* CTA Button */}
         <div className="hidden md:block">
-          <Button className="bg-fisko-coral hover:bg-fisko-coral/90 text-white font-montserrat text-sm px-6">
-            Login Google
+          <Button asChild className="bg-fisko-coral hover:bg-fisko-coral/90 text-white font-montserrat text-sm px-6">
+            <a href="/auth">Entrar / Cadastrar</a>
           </Button>
         </div>
 
@@ -68,8 +68,8 @@ const Header = () => {
                   {item.name}
                 </a>
               ))}
-              <Button className="w-full bg-fisko-coral hover:bg-fisko-coral/90 text-white font-montserrat text-sm">
-                Login Google
+              <Button asChild className="w-full bg-fisko-coral hover:bg-fisko-coral/90 text-white font-montserrat text-sm">
+                <a href="/auth">Entrar / Cadastrar</a>
               </Button>
             </nav>
           </div>
