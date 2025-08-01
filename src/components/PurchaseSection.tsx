@@ -166,9 +166,9 @@ const PurchaseSection = () => {
           </h3>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { sector: "Farmácia", items: "3.500+ produtos", price: "R$ 29.90/mês" },
-              { sector: "Hortifruti", items: "2.800+ produtos", price: "R$ 24.90/mês" },
-              { sector: "Construção", items: "4.200+ produtos", price: "R$ 34.90/mês" },
+              { sector: "Farmácia", items: "3.500+ produtos", price: "R$ 29.90/mês", productName: "Acesso a Tabelas - Farmácia" },
+              { sector: "Hortifruti", items: "2.800+ produtos", price: "R$ 24.90/mês", productName: "Acesso a Tabelas - Hortifruti" },
+              { sector: "Construção", items: "4.200+ produtos", price: "R$ 34.90/mês", productName: "Acesso a Tabelas - Construção" },
             ].map((sector, index) => (
               <Card key={index} className="text-center border-fisko-blue/20 hover:border-fisko-coral/50 transition-colors">
                 <CardContent className="p-6">
@@ -178,7 +178,7 @@ const PurchaseSection = () => {
                   <Button 
                     variant="outline" 
                     className="w-full border-fisko-blue text-fisko-blue hover:bg-fisko-blue hover:text-white font-montserrat text-sm"
-                    onClick={() => handlePurchase(sector.sector)}
+                    onClick={() => handlePurchase(sector.productName)}
                   >
                     Acessar Tabela
                   </Button>

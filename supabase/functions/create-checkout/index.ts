@@ -52,31 +52,70 @@ serve(async (req) => {
 
     const isSubscription = productType === "subscription";
     
-    const session = await stripe.checkout.sessions.create({
-      customer: customerId,
-      customer_email: customerId ? undefined : user.email,
-      line_items: [
-        {
-          price_data: {
-            currency: "brl",
-            product_data: { name: productName },
-            unit_amount: priceAmount * 100, // Convert to cents
-            ...(isSubscription ? { recurring: { interval: "month" } } : {}),
-          },
-          quantity: 1,
-        },
-      ],
-      mode: isSubscription ? "subscription" : "payment",
-      success_url: `${req.headers.get("origin")}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${req.headers.get("origin")}/`,
-    });
+    // Map product names to Stripe product IDs
+    const productMapping = {
+      "Hortifruti": "prod_SmClFA0KKsWJjp",
+      "Acesso a Tabelas - Hortifruti": "prod_SmClFA0KKsWJjp"
+    };
 
-    // Create subscription record
+    const stripeProductId = productMapping[productName];
+    
+    let sessionConfig;
+    if (stripeProductId) {
+      // Use existing Stripe product
+      const prices = await stripe.prices.list({
+        product: stripeProductId,
+        active: true,
+        limit: 1
+      });
+      
+      if (prices.data.length === 0) {
+        throw new Error(`No active price found for product ${stripeProductId}`);
+      }
+      
+      sessionConfig = {
+        customer: customerId,
+        customer_email: customerId ? undefined : user.email,
+        line_items: [
+          {
+            price: prices.data[0].id,
+            quantity: 1,
+          },
+        ],
+        mode: isSubscription ? "subscription" : "payment",
+        success_url: `${req.headers.get("origin")}/success?session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${req.headers.get("origin")}/`,
+      };
+    } else {
+      // Create price dynamically for other products
+      sessionConfig = {
+        customer: customerId,
+        customer_email: customerId ? undefined : user.email,
+        line_items: [
+          {
+            price_data: {
+              currency: "brl",
+              product_data: { name: productName },
+              unit_amount: priceAmount * 100, // Convert to cents
+              ...(isSubscription ? { recurring: { interval: "month" } } : {}),
+            },
+            quantity: 1,
+          },
+        ],
+        mode: isSubscription ? "subscription" : "payment",
+        success_url: `${req.headers.get("origin")}/success?session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${req.headers.get("origin")}/`,
+      };
+    }
+
+    const session = await stripe.checkout.sessions.create(sessionConfig);
+
+    // Create subscription record with stripe product id
     await supabaseClient.from("subscriptions").upsert({
       email: user.email,
       user_id: user.id,
       stripe_customer_id: customerId,
-      product_type: productType,
+      product_type: stripeProductId || productType,
       subscription_status: "pending",
       updated_at: new Date().toISOString(),
     }, { onConflict: 'email,product_type' });
