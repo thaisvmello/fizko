@@ -84,8 +84,8 @@ const Header = () => {
         {/* Logo */}
         <div className="flex items-center">
           <img 
-            src="/lovable-uploads/70578b8b-dd8f-4d27-a553-ba92873fb937.png" 
-            alt="FISK.O Logo" 
+            src="/lovable-uploads/050301e4-b562-4b42-aded-519ca1a67848.png" 
+            alt="Fizk.o Logo" 
             className="h-12 w-auto"
           />
         </div>

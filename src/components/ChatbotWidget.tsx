@@ -189,7 +189,11 @@ const ChatbotWidget = () => {
         className="fixed bottom-6 right-6 w-16 h-16 rounded-full bg-fizko-coral hover:bg-fizko-coral/90 text-white shadow-lg animate-float z-50"
         size="icon"
       >
-        <MessageCircle className="w-6 h-6" />
+        <img 
+          src="/lovable-uploads/1ed3cdfd-25d5-43eb-8b77-702d7be73be2.png" 
+          alt="Fizk.o Icon" 
+          className="w-6 h-6"
+        />
       </Button>
     );
   }
@@ -199,7 +203,11 @@ const ChatbotWidget = () => {
       <CardHeader className="bg-fizko-coral text-white rounded-t-lg p-4">
         <div className="flex items-center justify-between">
           <CardTitle className="font-montserrat text-lg flex items-center gap-2">
-            <MessageCircle className="w-5 h-5" />
+            <img 
+              src="/lovable-uploads/1ed3cdfd-25d5-43eb-8b77-702d7be73be2.png" 
+              alt="Fizk.o Icon" 
+              className="w-5 h-5"
+            />
             FIZK.O Assistant
           </CardTitle>
           <Button

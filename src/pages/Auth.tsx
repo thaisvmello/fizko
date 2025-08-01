@@ -246,6 +246,13 @@ const Auth = () => {
     <div className="min-h-screen bg-gradient-to-br from-primary/5 to-secondary/5 flex items-center justify-center p-4">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
+          <div className="flex justify-center mb-4">
+            <img 
+              src="/lovable-uploads/050301e4-b562-4b42-aded-519ca1a67848.png" 
+              alt="Fizk.o Logo" 
+              className="h-16 w-auto"
+            />
+          </div>
           <CardTitle className="text-2xl">
             {isLogin ? "Entrar" : "Criar Conta"}
           </CardTitle>

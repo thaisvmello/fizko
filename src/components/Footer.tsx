@@ -17,9 +17,11 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="md:col-span-1">
-            <div className="text-2xl font-playfair font-bold text-fisko-blue-dark mb-4">
-              FISK.O
-            </div>
+            <img 
+              src="/lovable-uploads/050301e4-b562-4b42-aded-519ca1a67848.png" 
+              alt="Fizk.o Logo" 
+              className="h-12 w-auto mb-4"
+            />
             <p className="text-muted-foreground font-montserrat text-sm leading-relaxed">
               Soluções fiscais personalizadas para empresas brasileiras. 
               Simplifique sua gestão tributária com nossas ferramentas especializadas.
