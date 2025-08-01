@@ -14,6 +14,60 @@ export type Database = {
   }
   public: {
     Tables: {
+      produtos_hortfruit: {
+        Row: {
+          "% COFINS": string | null
+          "% FECP": string | null
+          "% ICMS": string | null
+          "% PIS": string | null
+          "% REDUCAO": string | null
+          CEST: string | null
+          CFOP: number | null
+          "COD. BENEFICIO": string | null
+          CODIGO: number
+          "CST PIS/COFINS": number | null
+          "CST/CSOSN": number | null
+          DESCRICAO: string | null
+          "NATUREZA DA RECEITA": string | null
+          NCM: string | null
+          UF: string | null
+        }
+        Insert: {
+          "% COFINS"?: string | null
+          "% FECP"?: string | null
+          "% ICMS"?: string | null
+          "% PIS"?: string | null
+          "% REDUCAO"?: string | null
+          CEST?: string | null
+          CFOP?: number | null
+          "COD. BENEFICIO"?: string | null
+          CODIGO: number
+          "CST PIS/COFINS"?: number | null
+          "CST/CSOSN"?: number | null
+          DESCRICAO?: string | null
+          "NATUREZA DA RECEITA"?: string | null
+          NCM?: string | null
+          UF?: string | null
+        }
+        Update: {
+          "% COFINS"?: string | null
+          "% FECP"?: string | null
+          "% ICMS"?: string | null
+          "% PIS"?: string | null
+          "% REDUCAO"?: string | null
+          CEST?: string | null
+          CFOP?: number | null
+          "COD. BENEFICIO"?: string | null
+          CODIGO?: number
+          "CST PIS/COFINS"?: number | null
+          "CST/CSOSN"?: number | null
+          DESCRICAO?: string | null
+          "NATUREZA DA RECEITA"?: string | null
+          NCM?: string | null
+          UF?: string | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -109,6 +163,7 @@ export type Database = {
           access_granted: boolean | null
           created_at: string | null
           id: string
+          stripe_product_id: string | null
           subscription_id: string | null
           table_type: string
           updated_at: string | null
@@ -118,6 +173,7 @@ export type Database = {
           access_granted?: boolean | null
           created_at?: string | null
           id?: string
+          stripe_product_id?: string | null
           subscription_id?: string | null
           table_type: string
           updated_at?: string | null
@@ -127,6 +183,7 @@ export type Database = {
           access_granted?: boolean | null
           created_at?: string | null
           id?: string
+          stripe_product_id?: string | null
           subscription_id?: string | null
           table_type?: string
           updated_at?: string | null

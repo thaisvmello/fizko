@@ -12,6 +12,30 @@ const logStep = (step: string, details?: any) => {
   console.log(`[CHECK-SUBSCRIPTION] ${step}${detailsStr}`);
 };
 
+// Helper function to check if user has access to hortifruti product
+const checkHortifruitAccess = async (subscriptions: any[], paymentIntents: any[], stripe: any) => {
+  const hortifruitProductId = "prod_SmClFA0KKsWJjp";
+  
+  // Check active subscriptions for hortifruti product
+  for (const subscription of subscriptions) {
+    for (const item of subscription.items.data) {
+      const price = await stripe.prices.retrieve(item.price.id);
+      if (price.product === hortifruitProductId) {
+        return true;
+      }
+    }
+  }
+  
+  // Check completed one-time payments for hortifruti product
+  for (const paymentIntent of paymentIntents) {
+    if (paymentIntent.status === 'succeeded' && paymentIntent.metadata?.product_id === hortifruitProductId) {
+      return true;
+    }
+  }
+  
+  return false;
+};
+
 serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -54,7 +78,7 @@ serve(async (req) => {
         updated_at: new Date().toISOString(),
       }, { onConflict: 'email,product_type' });
       
-      return new Response(JSON.stringify({ subscriptions: [] }), {
+      return new Response(JSON.stringify({ subscriptions: [], hortifruti_access: false }), {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
         status: 200,
       });
@@ -77,6 +101,9 @@ serve(async (req) => {
 
     const activeSubscriptions = [];
     const purchases = [];
+    
+    // Check hortifruti access
+    const hasHortifruitAccess = await checkHortifruitAccess(subscriptions.data, paymentIntents.data, stripe);
 
     // Process subscriptions
     for (const sub of subscriptions.data) {
@@ -120,14 +147,27 @@ serve(async (req) => {
       }
     }
 
+    // Update table access for hortifruti
+    if (hasHortifruitAccess) {
+      await supabaseClient.from("table_access").upsert({
+        user_id: user.id,
+        table_type: "produtos_hortfruit",
+        stripe_product_id: "prod_SmClFA0KKsWJjp",
+        access_granted: true,
+        updated_at: new Date().toISOString(),
+      }, { onConflict: 'user_id,table_type' });
+    }
+
     logStep("Updated database with subscription info", { 
       activeSubscriptions: activeSubscriptions.length,
-      purchases: purchases.length 
+      purchases: purchases.length,
+      hasHortifruitAccess 
     });
 
     return new Response(JSON.stringify({
       subscriptions: activeSubscriptions,
       purchases: purchases,
+      hortifruti_access: hasHortifruitAccess,
     }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
       status: 200,
