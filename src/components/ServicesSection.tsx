@@ -1,6 +1,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Database, Download, Users, MessageCircle } from "lucide-react";
+import BotpressChatbot from "@/components/BotpressChatbot";
 
 const ServicesSection = () => {
   const services = [
@@ -107,10 +108,13 @@ const ServicesSection = () => {
                 </tbody>
               </table>
             </div>
-            <div className="p-4 text-center">
+            <div className="p-4 text-center space-y-3">
               <p className="text-sm text-muted-foreground font-montserrat">
                 🔒 Acesso completo disponível com assinatura - mais de 10.000+ produtos
               </p>
+              <div className="max-w-xs mx-auto">
+                <BotpressChatbot />
+              </div>
             </div>
           </div>
         </div>

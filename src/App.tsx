@@ -9,6 +9,7 @@ import Profile from "./pages/Profile";
 import Products from "./pages/Products";
 import Support from "./pages/Support";
 import NotFound from "./pages/NotFound";
+import BotpressChatbot from "./components/BotpressChatbot";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const App = () => (
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <BotpressChatbot isFloating={true} />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

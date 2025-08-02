@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Database, Download, Users, MessageCircle, Star } from "lucide-react";
 import { supabase } from '@/integrations/supabase/client';
+import BotpressChatbot from "@/components/BotpressChatbot";
 
 const PurchaseSection = () => {
   const products = [
@@ -147,13 +148,17 @@ const PurchaseSection = () => {
                   ))}
                 </ul>
 
-                <Button 
-                  className="w-full bg-fisko-coral hover:bg-fisko-coral/90 text-white font-montserrat text-sm"
-                  onClick={() => product.type === 'service' ? handleConsultingForm() : handlePurchase(product.title)}
-                >
-                  {product.type === 'service' ? 'Solicitar Orçamento' : 
-                   product.type === 'subscription' ? 'Assinar' : 'Comprar'}
-                </Button>
+                {product.title === "Chatbot Premium" ? (
+                  <BotpressChatbot />
+                ) : (
+                  <Button 
+                    className="w-full bg-fisko-coral hover:bg-fisko-coral/90 text-white font-montserrat text-sm"
+                    onClick={() => product.type === 'service' ? handleConsultingForm() : handlePurchase(product.title)}
+                  >
+                    {product.type === 'service' ? 'Solicitar Orçamento' : 
+                     product.type === 'subscription' ? 'Assinar' : 'Comprar'}
+                  </Button>
+                )}
               </CardContent>
             </Card>
           ))}

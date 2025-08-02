@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MessageCircle, Zap, Crown, Users } from "lucide-react";
+import BotpressChatbot from "@/components/BotpressChatbot";
 
 const AssistanceSection = () => {
   const plans = [
@@ -40,10 +41,6 @@ const AssistanceSection = () => {
     }
   ];
 
-  const handleChatbotTest = () => {
-    console.log("Opening chatbot test");
-    alert("Chatbot test would open here - this will be integrated with the AI chatbot service");
-  };
 
   const handleSubscribe = (planName: string) => {
     console.log(`Subscribing to: ${planName}`);
@@ -117,12 +114,7 @@ const AssistanceSection = () => {
               </div>
               
               <div className="text-center">
-                <Button 
-                  onClick={handleChatbotTest}
-                  className="bg-fisko-coral hover:bg-fisko-coral/90 text-white font-montserrat px-8"
-                >
-                  Testar Agora - Grátis
-                </Button>
+                <BotpressChatbot />
               </div>
             </CardContent>
           </Card>
@@ -174,17 +166,16 @@ const AssistanceSection = () => {
                   ))}
                 </ul>
                 
-                <Button 
-                  className={`w-full font-montserrat ${
-                    plan.buttonStyle === 'outline' 
-                      ? 'border-fisko-coral text-fisko-coral hover:bg-fisko-coral hover:text-white' 
-                      : 'bg-fisko-coral hover:bg-fisko-coral/90 text-white'
-                  }`}
-                  variant={plan.buttonStyle === 'outline' ? 'outline' : 'default'}
-                  onClick={() => handleSubscribe(plan.name)}
-                >
-                  {plan.buttonText}
-                </Button>
+                {plan.name === "Teste Gratuito" ? (
+                  <BotpressChatbot />
+                ) : (
+                  <Button 
+                    className="w-full bg-fisko-coral hover:bg-fisko-coral/90 text-white font-montserrat"
+                    onClick={() => handleSubscribe(plan.name)}
+                  >
+                    {plan.buttonText}
+                  </Button>
+                )}
               </CardContent>
             </Card>
           ))}
