@@ -27,7 +27,8 @@ const ServicesSection = () => {
       icon: MessageCircle,
       title: "Chatbot Fiscal",
       description: "Assistente IA treinado em base estruturada para questões tributárias específicas",
-      features: ["10 perguntas gratuitas", "Acesso básico e premium", "Respostas por estado/setor", "Base de dados estruturada"]
+      features: ["10 perguntas gratuitas", "Acesso básico e premium", "Respostas por estado/setor", "Base de dados estruturada"],
+      hasButton: true
     }
   ];
 
@@ -57,13 +58,16 @@ const ServicesSection = () => {
                 <p className="text-muted-foreground font-montserrat mb-4">
                   {service.description}
                 </p>
-                <ul className="space-y-2 text-sm">
+                <ul className="space-y-2 text-sm mb-4">
                   {service.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="text-muted-foreground font-montserrat">
                       • {feature}
                     </li>
                   ))}
                 </ul>
+                {service.hasButton && (
+                  <BotpressChatbot />
+                )}
               </CardContent>
             </Card>
           ))}

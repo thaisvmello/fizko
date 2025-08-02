@@ -18,7 +18,7 @@ const AssistanceSection = () => {
         "Informações fiscais gerais",
         "Suporte por email"
       ],
-      buttonText: "Começar Teste",
+      buttonText: "Testar Agora - Grátis",
       buttonStyle: "outline"
     },
     {

@@ -44,7 +44,8 @@ const PurchaseSection = () => {
       features: ["Consultas ilimitadas", "Base estruturada", "Por estado/setor", "Suporte 24/7"],
       icon: MessageCircle,
       popular: false,
-      type: "subscription"
+      type: "subscription",
+      buttonText: "Chatbot Premium"
     }
   ];
 
@@ -148,17 +149,22 @@ const PurchaseSection = () => {
                   ))}
                 </ul>
 
-                {product.title === "Chatbot Premium" ? (
-                  <BotpressChatbot />
-                ) : (
-                  <Button 
-                    className="w-full bg-fisko-coral hover:bg-fisko-coral/90 text-white font-montserrat text-sm"
-                    onClick={() => product.type === 'service' ? handleConsultingForm() : handlePurchase(product.title)}
-                  >
-                    {product.type === 'service' ? 'Solicitar Orçamento' : 
-                     product.type === 'subscription' ? 'Assinar' : 'Comprar'}
-                  </Button>
-                )}
+                <Button 
+                  className="w-full bg-fisko-coral hover:bg-fisko-coral/90 text-white font-montserrat text-sm"
+                  onClick={() => {
+                    if (product.title === "Chatbot Premium") {
+                      window.open('https://cdn.botpress.cloud/webchat/v3.2/shareable.html?configUrl=https://files.bpcontent.cloud/2025/07/30/16/20250730160400-G8B5OPNZ.json', '_blank');
+                    } else if (product.type === 'service') {
+                      handleConsultingForm();
+                    } else {
+                      handlePurchase(product.title);
+                    }
+                  }}
+                >
+                  {product.title === "Chatbot Premium" ? 'Chatbot Premium' :
+                   product.type === 'service' ? 'Solicitar Orçamento' : 
+                   product.type === 'subscription' ? 'Assinar' : 'Comprar'}
+                </Button>
               </CardContent>
             </Card>
           ))}

@@ -36,6 +36,7 @@ const BotpressChatbot = ({ isFloating = false, onOpen }: BotpressChatbotProps) =
         // Configure Botpress
         window.botpress.init({
           clientId: '9aa47972-5223-41b9-bb57-d22005b8ba22',
+          botId: '9aa47972-5223-41b9-bb57-d22005b8ba22',
           hideWidget: isFloating, // Hide default widget if we're using custom floating button
         });
       }
@@ -50,8 +51,12 @@ const BotpressChatbot = ({ isFloating = false, onOpen }: BotpressChatbotProps) =
   }, [isFloating]);
 
   const openChatbot = () => {
-    if (window.botpress) {
+    if (isFloating && window.botpress) {
       window.botpress.open();
+      onOpen?.();
+    } else {
+      // Open Botpress in new tab for button clicks
+      window.open('https://cdn.botpress.cloud/webchat/v3.2/shareable.html?configUrl=https://files.bpcontent.cloud/2025/07/30/16/20250730160400-G8B5OPNZ.json', '_blank');
       onOpen?.();
     }
   };
@@ -78,9 +83,8 @@ const BotpressChatbot = ({ isFloating = false, onOpen }: BotpressChatbotProps) =
     <Button
       onClick={openChatbot}
       className="w-full bg-fizko-coral hover:bg-fizko-coral/90 text-white"
-      disabled={!isLoaded}
     >
-      {isLoaded ? 'Abrir Chatbot' : 'Carregando...'}
+      Abrir Chatbot
     </Button>
   );
 };
