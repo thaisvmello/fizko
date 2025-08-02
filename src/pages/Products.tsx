@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { ArrowLeft, Package, CheckCircle, XCircle } from "lucide-react";
+import ProductChatbot from "@/components/ProductChatbot";
 
 const Products = () => {
   const [user, setUser] = useState<any>(null);
@@ -210,6 +211,11 @@ const Products = () => {
               ))}
             </div>
           )}
+        </div>
+        
+        {/* Product Chatbot */}
+        <div className="fixed bottom-6 left-6 z-50">
+          <ProductChatbot productId="prod_SmClL8v57p0wX7" maxFreeQueries={10} />
         </div>
       </div>
     </div>
