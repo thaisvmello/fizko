@@ -15,7 +15,7 @@ import { ArrowLeft, User } from "lucide-react";
 const profileSchema = z.object({
   full_name: z.string().min(2, "Nome deve ter pelo menos 2 caracteres"),
   email: z.string().email("Email inválido"),
-  phone: z.string().regex(/^\(\d{2}\)\s\d{4,5}-\d{4}$/, "Telefone inválido. Use o formato (XX) XXXXX-XXXX"),
+  phone: z.string().optional().refine((val) => !val || /^\(\d{2}\)\s\d{4,5}-\d{4}$/.test(val), "Telefone inválido. Use o formato (XX) XXXXX-XXXX"),
   cep: z.string().regex(/^\d{5}-?\d{3}$/, "CEP inválido"),
   street: z.string().min(5, "Rua deve ter pelo menos 5 caracteres"),
   neighborhood: z.string().min(2, "Bairro deve ter pelo menos 2 caracteres"),
@@ -216,19 +216,37 @@ const Profile = () => {
                     )}
                   />
 
-                  <FormField
-                    control={form.control}
-                    name="phone"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Telefone</FormLabel>
-                        <FormControl>
-                          <Input {...field} placeholder="(XX) XXXXX-XXXX" />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                   <FormField
+                     control={form.control}
+                     name="phone"
+                     render={({ field }) => (
+                       <FormItem>
+                         <FormLabel>Telefone</FormLabel>
+                         <FormControl>
+                           <Input 
+                             {...field} 
+                             placeholder="(XX) XXXXX-XXXX"
+                             onChange={(e) => {
+                               let value = e.target.value.replace(/\D/g, '');
+                               if (value.length <= 11) {
+                                 if (value.length <= 2) {
+                                   value = value.replace(/(\d{2})/, '($1)');
+                                 } else if (value.length <= 6) {
+                                   value = value.replace(/(\d{2})(\d{4})/, '($1) $2');
+                                 } else if (value.length <= 10) {
+                                   value = value.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
+                                 } else {
+                                   value = value.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+                                 }
+                               }
+                               field.onChange(value);
+                             }}
+                           />
+                         </FormControl>
+                         <FormMessage />
+                       </FormItem>
+                     )}
+                   />
 
                   <FormField
                     control={form.control}

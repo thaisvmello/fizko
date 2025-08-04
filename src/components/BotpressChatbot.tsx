@@ -51,7 +51,7 @@ const BotpressChatbot = ({ isFloating = false, onOpen }: BotpressChatbotProps) =
   }, [isFloating]);
 
   const openChatbot = () => {
-    if (isFloating && window.botpress) {
+    if (window.botpress) {
       window.botpress.open();
       onOpen?.();
     } else {
@@ -71,8 +71,8 @@ const BotpressChatbot = ({ isFloating = false, onOpen }: BotpressChatbotProps) =
         disabled={!isLoaded}
       >
         <img 
-          src="/lovable-uploads/1ae2d948-e4c2-42fe-957f-0574f1110e2d.png" 
-          alt="Chatbot Icon" 
+          src="/lovable-uploads/050301e4-b562-4b42-aded-519ca1a67848.png" 
+          alt="Fizko Chatbot" 
           className="w-8 h-8"
         />
       </Button>

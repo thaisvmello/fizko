@@ -65,8 +65,8 @@ const Footer = () => {
             <h4 className="font-montserrat font-semibold mb-4 text-fisko-blue-dark">Começar Agora</h4>
             <div className="space-y-4">
               <div className="space-y-2 text-sm font-montserrat text-muted-foreground">
-                <p>📧 contato@fisko.com.br</p>
-                <p>📱 WhatsApp: +55 21 96457-9471</p>
+                <p>📧 <a href="mailto:contato@fisko.com.br?subject=Fizko%20-%20Suporte&body=" className="hover:text-fisko-coral transition-colors">contato@fisko.com.br</a></p>
+                <p>📱 <a href="https://w.app/fizko" target="_blank" rel="noopener noreferrer" className="hover:text-fisko-coral transition-colors">WhatsApp: +55 21 96457-9471</a></p>
               </div>
               <Button className="w-full bg-fisko-coral hover:bg-fisko-coral/90 text-white font-montserrat text-sm">
                 Acessar Agora
