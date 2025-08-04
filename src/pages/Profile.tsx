@@ -78,7 +78,7 @@ const Profile = () => {
       form.reset({
         full_name: data.full_name || "",
         email: data.email || "",
-        phone: data.phone || "",
+        phone: (data as any).phone || "",
         cep: data.cep || "",
         street: data.street || "",
         neighborhood: data.neighborhood || "",
