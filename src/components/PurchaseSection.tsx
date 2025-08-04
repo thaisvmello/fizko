@@ -7,19 +7,29 @@ import BotpressChatbot from "@/components/BotpressChatbot";
 const PurchaseSection = () => {
   const products = [
     {
-      title: "Acesso a Tabelas - Farmácia",
+      title: "Teste Gratuito",
+      price: "R$ 0",
+      period: "/mês",
+      description: "Experimente nosso assistente IA com consultas limitadas",
+      features: ["10 consultas grátis!", "Busca básica de NCM", "Informações fiscais gerais"],
+      icon: Database,
+      popular: false,
+      type: "free"
+    },
+    {
+      title: "Tabelas por Setor",
       price: "R$ 29.90",
       period: "/mês",
-      description: "Acesso completo às tabelas de dados tributários para farmácias",
-      features: ["Base NCM farmacêutica", "Filtros por regime", "Busca responsiva", "Atualizações automáticas"],
+      description: "Acesso completo às tabelas de dados tributários para diversos setores",
+      features: ["Base NCM", "Filtros por regime", "Busca responsiva", "Atualizações automáticas", "Faça o download no layout do seu ERP por R$ 49,90"],
       icon: Database,
       popular: false,
       type: "subscription"
     },
     {
       title: "Planilhas Personalizadas",
-      price: "R$ 49.90",
-      period: "/download",
+      price: "A partir de R$ 199,00",
+      period: "",
       description: "Planilhas customizadas conforme suas especificações",
       features: ["Formulário online", "Layout personalizado", "Múltiplas colunas", "Formato Excel"],
       icon: Download,
@@ -37,15 +47,15 @@ const PurchaseSection = () => {
       type: "service"
     },
     {
-      title: "Chatbot Premium",
-      price: "R$ 49.90",
+      title: "Básico",
+      price: "R$ 29.90",
       period: "/mês",
-      description: "Acesso ilimitado ao assistente fiscal IA",
-      features: ["Consultas ilimitadas", "Base estruturada", "Por estado/setor", "Suporte 24/7"],
+      description: "Acesso ilimitado ao nosso assistente fiscal IA",
+      features: ["Consultas ilimitadas", "Personalização por estado/setor", "Busca de NCM & CFOP", "Cálculos tributários"],
       icon: MessageCircle,
       popular: false,
       type: "subscription",
-      buttonText: "Chatbot Premium"
+      buttonText: "Chatbot Básico"
     }
   ];
 
@@ -152,7 +162,7 @@ const PurchaseSection = () => {
                 <Button 
                   className="w-full bg-fisko-coral hover:bg-fisko-coral/90 text-white font-montserrat text-sm"
                   onClick={() => {
-                    if (product.title === "Chatbot Premium") {
+                    if (product.title === "Teste Gratuito" || product.title === "Básico") {
                       window.open('https://cdn.botpress.cloud/webchat/v3.2/shareable.html?configUrl=https://files.bpcontent.cloud/2025/07/30/16/20250730160400-G8B5OPNZ.json', '_blank');
                     } else if (product.type === 'service') {
                       handleConsultingForm();
@@ -161,7 +171,8 @@ const PurchaseSection = () => {
                     }
                   }}
                 >
-                  {product.title === "Chatbot Premium" ? 'Chatbot Premium' :
+                  {product.title === "Teste Gratuito" ? 'Testar Agora - Grátis' :
+                   product.title === "Básico" ? 'Chatbot Básico' :
                    product.type === 'service' ? 'Solicitar Orçamento' : 
                    product.type === 'subscription' ? 'Assinar' : 'Comprar'}
                 </Button>

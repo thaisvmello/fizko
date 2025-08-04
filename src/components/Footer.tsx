@@ -66,7 +66,7 @@ const Footer = () => {
             <div className="space-y-4">
               <div className="space-y-2 text-sm font-montserrat text-muted-foreground">
                 <p>📧 contato@fisko.com.br</p>
-                <p>📱 WhatsApp: +55 11 99999-9999</p>
+                <p>📱 WhatsApp: +55 21 96457-9471</p>
               </div>
               <Button className="w-full bg-fisko-coral hover:bg-fisko-coral/90 text-white font-montserrat text-sm">
                 Acessar Agora

@@ -13,29 +13,26 @@ const AssistanceSection = () => {
       period: "/mês",
       description: "Experimente nosso assistente IA com consultas limitadas",
       features: [
-        "10 perguntas por mês",
+        "10 consultas grátis!",
         "Busca básica de NCM",
-        "Informações fiscais gerais",
-        "Suporte por email"
+        "Informações fiscais gerais"
       ],
       buttonText: "Testar Agora - Grátis",
       buttonStyle: "outline"
     },
     {
-      name: "Premium",
+      name: "Básico",
       icon: Crown,
-      price: "R$ 49.90",
+      price: "R$ 29.90",
       period: "/mês",
       description: "Acesso ilimitado ao nosso assistente fiscal IA",
       features: [
         "Consultas ilimitadas",
-        "Busca avançada NCM & CFOP",
-        "Cálculos tributários",
-        "Suporte prioritário",
-        "Recomendações personalizadas",
-        "Exportar conversas"
+        "Personalização por estado/setor",
+        "Busca de NCM & CFOP",
+        "Cálculos tributários"
       ],
-      buttonText: "Assinar Agora",
+      buttonText: "Começar Teste",
       buttonStyle: "default",
       popular: true
     }
@@ -166,7 +163,7 @@ const AssistanceSection = () => {
                   ))}
                 </ul>
                 
-                {plan.name === "Teste Gratuito" ? (
+                {plan.name === "Teste Gratuito" || plan.name === "Básico" ? (
                   <BotpressChatbot />
                 ) : (
                   <Button 

@@ -17,6 +17,7 @@ const signupSchema = z.object({
   fullName: z.string().min(2, "Nome completo deve ter pelo menos 2 caracteres"),
   email: z.string().email("Email inválido"),
   confirmEmail: z.string().email("Email inválido"),
+  phone: z.string().min(10, "Telefone deve ter pelo menos 10 dígitos"),
   cep: z.string().regex(/^\d{5}-?\d{3}$/, "CEP deve ter 8 dígitos"),
   street: z.string().min(1, "Rua é obrigatória"),
   neighborhood: z.string().min(1, "Bairro é obrigatório"),
@@ -70,6 +71,7 @@ const Auth = () => {
       fullName: "",
       email: "",
       confirmEmail: "",
+      phone: "",
       cep: "",
       street: "",
       neighborhood: "",
@@ -190,6 +192,7 @@ const Auth = () => {
           emailRedirectTo: `${window.location.origin}/`,
           data: {
             full_name: data.fullName,
+            phone: data.phone,
             cep: data.cep,
             street: data.street,
             neighborhood: data.neighborhood,
@@ -253,9 +256,9 @@ const Auth = () => {
               className="h-16 w-auto"
             />
           </div>
-          <CardTitle className="text-2xl">
-            {isLogin ? "Entrar" : "Criar Conta"}
-          </CardTitle>
+          {!isLogin && (
+            <CardTitle className="text-2xl">Criar Conta</CardTitle>
+          )}
           <CardDescription>
             {isLogin 
               ? "Entre na sua conta para continuar" 
@@ -384,6 +387,25 @@ const Auth = () => {
                 {signupForm.formState.errors.confirmEmail && (
                   <p className="text-sm text-destructive">
                     {signupForm.formState.errors.confirmEmail.message}
+                  </p>
+                )}
+              </div>
+
+              {/* Telefone */}
+              <div className="space-y-2">
+                <Label htmlFor="phone">Telefone</Label>
+                <div className="relative">
+                  <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+                  <Input
+                    id="phone"
+                    {...signupForm.register("phone")}
+                    placeholder="(11) 99999-9999"
+                    className="pl-10"
+                  />
+                </div>
+                {signupForm.formState.errors.phone && (
+                  <p className="text-sm text-destructive">
+                    {signupForm.formState.errors.phone.message}
                   </p>
                 )}
               </div>
