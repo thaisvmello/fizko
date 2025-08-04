@@ -25,9 +25,9 @@ const AssistanceSection = () => {
       icon: Crown,
       price: "R$ 29.90",
       period: "/mês",
-      description: "Acesso ilimitado ao nosso assistente fiscal IA",
+      description: "Acesso ao nosso assistente fiscal IA",
       features: [
-        "Consultas ilimitadas",
+        "Consultas limitadas",
         "Personalização por estado/setor",
         "Busca de NCM & CFOP",
         "Cálculos tributários"
@@ -35,6 +35,21 @@ const AssistanceSection = () => {
       buttonText: "Começar Teste",
       buttonStyle: "default",
       popular: true
+    },
+    {
+      name: "Premium",
+      icon: Crown,
+      price: "R$ 49.90",
+      period: "/mês",
+      description: "Seu assistente fiscal IA ainda melhor!",
+      features: [
+        "Consultas ilimitadas",
+        "Cálculos e análises abrangentes",
+        "Exportação em planilha/pdf"
+      ],
+      buttonText: "Começar Premium",
+      buttonStyle: "default",
+      popular: false
     }
   ];
 
@@ -163,16 +178,14 @@ const AssistanceSection = () => {
                   ))}
                 </ul>
                 
-                {plan.name === "Teste Gratuito" || plan.name === "Básico" ? (
-                  <BotpressChatbot />
-                ) : (
-                  <Button 
-                    className="w-full bg-fisko-coral hover:bg-fisko-coral/90 text-white font-montserrat"
-                    onClick={() => handleSubscribe(plan.name)}
-                  >
-                    {plan.buttonText}
-                  </Button>
-                )}
+                <Button 
+                  className="w-full bg-fisko-coral hover:bg-fisko-coral/90 text-white font-montserrat"
+                  onClick={() => {
+                    window.open('https://cdn.botpress.cloud/webchat/v3.2/shareable.html?configUrl=https://files.bpcontent.cloud/2025/07/30/16/20250730160400-G8B5OPNZ.json', '_blank');
+                  }}
+                >
+                  {plan.buttonText}
+                </Button>
               </CardContent>
             </Card>
           ))}

@@ -15,6 +15,7 @@ import { ArrowLeft, User } from "lucide-react";
 const profileSchema = z.object({
   full_name: z.string().min(2, "Nome deve ter pelo menos 2 caracteres"),
   email: z.string().email("Email inválido"),
+  phone: z.string().regex(/^\(\d{2}\)\s\d{4,5}-\d{4}$/, "Telefone inválido. Use o formato (XX) XXXXX-XXXX"),
   cep: z.string().regex(/^\d{5}-?\d{3}$/, "CEP inválido"),
   street: z.string().min(5, "Rua deve ter pelo menos 5 caracteres"),
   neighborhood: z.string().min(2, "Bairro deve ter pelo menos 2 caracteres"),
@@ -38,6 +39,7 @@ const Profile = () => {
     defaultValues: {
       full_name: "",
       email: "",
+      phone: "",
       cep: "",
       street: "",
       neighborhood: "",
@@ -76,6 +78,7 @@ const Profile = () => {
       form.reset({
         full_name: data.full_name || "",
         email: data.email || "",
+        phone: data.phone || "",
         cep: data.cep || "",
         street: data.street || "",
         neighborhood: data.neighborhood || "",
@@ -116,6 +119,7 @@ const Profile = () => {
         .update({
           full_name: data.full_name,
           email: data.email,
+          phone: data.phone,
           cep: data.cep,
           street: data.street,
           neighborhood: data.neighborhood,
@@ -206,6 +210,20 @@ const Profile = () => {
                         <FormLabel>Email</FormLabel>
                         <FormControl>
                           <Input {...field} type="email" placeholder="seu@email.com" />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="phone"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Telefone</FormLabel>
+                        <FormControl>
+                          <Input {...field} placeholder="(XX) XXXXX-XXXX" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
