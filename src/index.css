@@ -3,48 +3,56 @@
 @tailwind components;
 @tailwind utilities;
 
-/* FISK.O Design System - Baseado no logo */
+/* FIZK.O Design System - Nova paleta de cores */
 
 @layer base {
   :root {
-    --background: 40 20% 94%; /* #F0EFEB - Bege claro do logo */
-    --foreground: 210 25% 15%; /* #1E2836 - Azul escuro do texto */
+    --background: 40 20% 94%; /* #F0EFEB - Bege claro */
+    --foreground: 201 21% 27%; /* #3E5B6B - Azul escuro da paleta */
 
     --card: 0 0% 100%;
-    --card-foreground: 210 25% 15%;
+    --card-foreground: 201 21% 27%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 210 25% 15%;
+    --popover-foreground: 201 21% 27%;
 
-    --primary: 200 30% 45%; /* #5A8CAE - Azul acinzentado do logo */
+    --primary: 201 21% 27%; /* #3E5B6B - Azul principal da nova paleta */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 15 85% 65%; /* #E85A3F - Laranja/coral do ponto */
+    --secondary: 12 100% 66%; /* #FF7A50 - Coral da nova paleta */
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 40 20% 94%;
-    --muted-foreground: 210 25% 40%;
+    --muted: 32 67% 95%; /* #FCF9F3 - Bege muito claro */
+    --muted-foreground: 0 0% 60%; /* #999999 - Cinza da paleta */
 
-    --accent: 200 30% 45%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 0 0% 75%; /* #BFBFBF - Cinza claro da paleta */
+    --accent-foreground: 201 21% 27%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 200 20% 80%;
-    --input: 200 20% 85%;
-    --ring: 200 30% 45%;
+    --border: 0 0% 85%; /* #D9D9D9 - Cinza da paleta para bordas */
+    --input: 0 0% 90%; /* Cinza mais claro para inputs */
+    --ring: 201 21% 27%;
 
     --radius: 0.5rem;
 
+    /* FIZKO Brand Colors - Baseado na nova paleta */
+    --fizko-blue: 201 21% 27%; /* #3E5B6B */
+    --fizko-blue-dark: 201 31% 17%; /* Versão mais escura */
+    --fizko-coral: 12 100% 66%; /* #FF7A50 */
+    --fizko-beige: 32 67% 95%; /* #FCF9F3 */
+    --fizko-gray: 0 0% 60%; /* #999999 */
+    --fizko-light-gray: 0 0% 75%; /* #BFBFBF */
+
     --sidebar-background: 40 20% 94%;
-    --sidebar-foreground: 210 25% 15%;
-    --sidebar-primary: 200 30% 45%;
+    --sidebar-foreground: 201 21% 27%;
+    --sidebar-primary: 201 21% 27%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 15 85% 65%;
+    --sidebar-accent: 12 100% 66%;
     --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 200 20% 80%;
-    --sidebar-ring: 200 30% 45%;
+    --sidebar-border: 0 0% 85%;
+    --sidebar-ring: 201 21% 27%;
   }
 
   .dark {

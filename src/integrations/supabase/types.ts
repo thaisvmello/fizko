@@ -14,6 +14,24 @@ export type Database = {
   }
   public: {
     Tables: {
+      admin_users: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+        }
+        Relationships: []
+      }
       produtos_hortfruit: {
         Row: {
           "% COFINS": string | null
@@ -79,6 +97,7 @@ export type Database = {
           full_name: string | null
           id: string
           neighborhood: string | null
+          phone: string | null
           state: string | null
           street: string | null
           updated_at: string | null
@@ -94,6 +113,7 @@ export type Database = {
           full_name?: string | null
           id?: string
           neighborhood?: string | null
+          phone?: string | null
           state?: string | null
           street?: string | null
           updated_at?: string | null
@@ -109,6 +129,7 @@ export type Database = {
           full_name?: string | null
           id?: string
           neighborhood?: string | null
+          phone?: string | null
           state?: string | null
           street?: string | null
           updated_at?: string | null
@@ -198,6 +219,30 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      user_dashboard_layout: {
+        Row: {
+          created_at: string
+          id: string
+          layout_data: Json
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          layout_data?: Json
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          layout_data?: Json
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
       }
     }
     Views: {

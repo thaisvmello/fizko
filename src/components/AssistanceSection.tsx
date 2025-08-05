@@ -91,7 +91,7 @@ const AssistanceSection = () => {
                     </div>
                     <div className="bg-white rounded-lg p-3 shadow-sm max-w-md">
                       <p className="font-montserrat text-sm">
-                        Olá! Sou o Assistente FISK.O. Como posso ajudar com suas questões fiscais hoje?
+                        Olá! Sou o Assistente FIZK.O. Como posso ajudar com suas questões fiscais hoje?
                       </p>
                     </div>
                   </div>

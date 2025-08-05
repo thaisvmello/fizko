@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { Menu, X, User, Settings, Package, HeadphonesIcon, LogOut } from "lucide-react";
+import { Menu, X, User, Settings, Package, HeadphonesIcon, LogOut, LayoutDashboard } from "lucide-react";
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from "react-router-dom";
@@ -11,6 +11,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [user, setUser] = useState<SupabaseUser | null>(null);
   const [profile, setProfile] = useState<any>(null);
+  const [hasAccess, setHasAccess] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -45,6 +46,14 @@ const Header = () => {
       .maybeSingle();
     
     setProfile(data);
+    
+    // Check for subscriptions or admin access
+    const [subscriptions, adminCheck] = await Promise.all([
+      supabase.from('subscriptions').select('*').eq('user_id', userId),
+      supabase.from('admin_users').select('*').eq('email', user?.email).single()
+    ]);
+    
+    setHasAccess(!!(subscriptions.data?.length || adminCheck.data));
   };
 
   const handleSignOut = async () => {
@@ -85,7 +94,7 @@ const Header = () => {
         <div className="flex items-center">
           <img 
             src="/lovable-uploads/050301e4-b562-4b42-aded-519ca1a67848.png" 
-            alt="Fizk.o Logo" 
+            alt="FIZK.O Logo" 
             className="h-12 w-auto"
           />
         </div>
@@ -104,9 +113,21 @@ const Header = () => {
         </nav>
 
         {/* User Avatar or CTA Button */}
-        <div className="hidden md:block">
+        <div className="hidden md:flex items-center gap-3">
           {user ? (
-            <DropdownMenu>
+            <>
+              {hasAccess && (
+                <Button 
+                  variant="outline"
+                  size="sm"
+                  onClick={() => navigate('/dashboard')}
+                  className="border-fizko-coral text-fizko-coral hover:bg-fizko-coral hover:text-white font-montserrat"
+                >
+                  <LayoutDashboard className="w-4 h-4 mr-2" />
+                  DASHBOARD
+                </Button>
+              )}
+              <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="relative h-12 w-12 rounded-full">
                   <Avatar className="h-10 w-10">
@@ -122,11 +143,17 @@ const Header = () => {
                   <p className="font-medium text-sm">{getDisplayName()}</p>
                   <p className="text-xs text-muted-foreground">{user.email}</p>
                 </div>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={() => navigate('/profile')} className="cursor-pointer">
-                  <Settings className="mr-2 h-4 w-4" />
-                  Editar perfil
-                </DropdownMenuItem>
+                 <DropdownMenuSeparator />
+                 {hasAccess && (
+                   <DropdownMenuItem onClick={() => navigate('/dashboard')} className="cursor-pointer">
+                     <LayoutDashboard className="mr-2 h-4 w-4" />
+                     Dashboard
+                   </DropdownMenuItem>
+                 )}
+                 <DropdownMenuItem onClick={() => navigate('/profile')} className="cursor-pointer">
+                   <Settings className="mr-2 h-4 w-4" />
+                   Editar perfil
+                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => navigate('/products')} className="cursor-pointer">
                   <Package className="mr-2 h-4 w-4" />
                   Meus produtos
@@ -142,6 +169,7 @@ const Header = () => {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
+            </>
           ) : (
             <Button asChild className="bg-fisko-coral hover:bg-fisko-coral/90 text-white font-montserrat text-sm px-6">
               <a href="/auth">Entrar / Cadastrar</a>
