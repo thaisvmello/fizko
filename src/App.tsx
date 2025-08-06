@@ -9,6 +9,7 @@ import Profile from "./pages/Profile";
 import Products from "./pages/Products";
 import Support from "./pages/Support";
 import Dashboard from "./pages/Dashboard";
+import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import BotpressChatbot from "./components/BotpressChatbot";
 
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/products" element={<Products />} />
           <Route path="/support" element={<Support />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/about" element={<About />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

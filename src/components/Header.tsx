@@ -82,9 +82,9 @@ const Header = () => {
 
   const navigation = [
     { name: "Início", href: "#home" },
-    { name: "Serviços", href: "#services" },
-    { name: "Produtos", href: "#purchase" },
-    { name: "Chatbot", href: "#assistance" },
+    { name: "Produtos & Serviços", href: "#services" },
+    { name: "Sobre", href: "/about" },
+    { name: "Contato", href: "/support" },
   ];
 
   return (
@@ -105,7 +105,7 @@ const Header = () => {
             <a
               key={item.name}
               href={item.href}
-              className="font-montserrat text-sm font-medium text-fisko-blue-dark hover:text-fisko-coral transition-colors"
+              className="font-montserrat text-base font-medium text-fizko-blue-dark hover:text-fizko-coral transition-colors"
             >
               {item.name}
             </a>
@@ -195,7 +195,7 @@ const Header = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="block font-montserrat text-sm font-medium text-fisko-blue-dark hover:text-fisko-coral transition-colors"
+                  className="block font-montserrat text-base font-medium text-fizko-blue-dark hover:text-fizko-coral transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}

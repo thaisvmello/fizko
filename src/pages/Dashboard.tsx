@@ -198,7 +198,7 @@ const Dashboard = () => {
               />
               <div>
                 <h1 className="text-xl font-playfair font-bold text-fizko-blue">
-                  Dashboard FIZK.O
+                  Dashboard
                 </h1>
                 <p className="text-sm text-muted-foreground">
                   Bem-vindo, {user?.user_metadata?.full_name || user?.email}

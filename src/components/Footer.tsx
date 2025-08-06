@@ -2,11 +2,10 @@ import { Button } from "@/components/ui/button";
 
 const Footer = () => {
   const links = [
-    { name: "Início", href: "#home" },
-    { name: "Serviços", href: "#services" },
-    { name: "Produtos", href: "#purchase" },
-    { name: "Chatbot", href: "#assistance" },
-    { name: "Contato", href: "#contact" },
+    { name: "Início", href: "/" },
+    { name: "Produtos & Serviços", href: "/#services" },
+    { name: "Sobre", href: "/about" },
+    { name: "Contato", href: "/support" },
     { name: "Termos", href: "#terms" },
     { name: "Privacidade", href: "#privacy" },
   ];
@@ -65,7 +64,7 @@ const Footer = () => {
             <h4 className="font-montserrat font-semibold mb-4 text-fisko-blue-dark">Começar Agora</h4>
             <div className="space-y-4">
               <div className="space-y-2 text-sm font-montserrat text-muted-foreground">
-                <p>📧 <a href="mailto:contato@fisko.com.br?subject=Fizko%20-%20Suporte&body=" className="hover:text-fizko-coral transition-colors">contato@fisko.com.br</a></p>
+                <p>📧 <a href="mailto:contato@fizko.com.br?subject=Fizko%20-%20Suporte&body=" className="hover:text-fizko-coral transition-colors">contato@fizko.com.br</a></p>
                 <p>📱 <a href="https://w.app/fizko" target="_blank" rel="noopener noreferrer" className="hover:text-fisko-coral transition-colors">WhatsApp: +55 21 96457-9471</a></p>
               </div>
               <Button className="w-full bg-fisko-coral hover:bg-fisko-coral/90 text-white font-montserrat text-sm">

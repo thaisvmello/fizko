@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
   return (
-    <section id="home" className="pt-20 min-h-[70vh] flex items-center hexagon-pattern">
+    <section id="home" className="pt-20 h-[60vh] flex items-center hexagon-pattern">
       <div className="container mx-auto px-4 py-12">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           {/* Text Content */}

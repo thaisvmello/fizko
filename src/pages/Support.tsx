@@ -67,9 +67,11 @@ const Support = () => {
     setIsSubmitting(true);
     
     try {
-      // Aqui você pode integrar com um serviço de email ou criar uma tabela de suporte
-      // Por enquanto, vamos simular o envio
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      const { error } = await supabase.functions.invoke('send-support-email', {
+        body: data
+      });
+
+      if (error) throw error;
       
       toast({
         title: "Mensagem enviada!",
@@ -83,6 +85,7 @@ const Support = () => {
         message: "",
       });
     } catch (error: any) {
+      console.error('Error sending support email:', error);
       toast({
         title: "Erro",
         description: "Erro ao enviar mensagem. Tente novamente.",
@@ -221,7 +224,7 @@ const Support = () => {
                     </div>
                     <div>
                       <p className="font-medium text-fisko-blue-dark">Email</p>
-                      <p className="text-sm text-fisko-blue/70">suporte@fisko.com.br</p>
+                      <p className="text-sm text-fizko-blue/70">contato@fizko.com.br</p>
                     </div>
                   </div>
 
@@ -231,7 +234,11 @@ const Support = () => {
                     </div>
                     <div>
                       <p className="font-medium text-fisko-blue-dark">Telefone</p>
-                      <p className="text-sm text-fisko-blue/70">+55 (11) 9999-9999</p>
+                      <p className="text-sm text-fizko-blue/70">
+                        <a href="https://w.app/fizko" target="_blank" rel="noopener noreferrer" className="hover:text-fizko-coral transition-colors">
+                          +55 21 96457-9471
+                        </a>
+                      </p>
                     </div>
                   </div>
 

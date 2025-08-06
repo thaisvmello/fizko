@@ -213,10 +213,6 @@ const Products = () => {
           )}
         </div>
         
-        {/* Product Chatbot */}
-        <div className="fixed bottom-6 left-6 z-50">
-          <ProductChatbot productId="prod_SmClL8v57p0wX7" maxFreeQueries={10} />
-        </div>
       </div>
     </div>
   );
