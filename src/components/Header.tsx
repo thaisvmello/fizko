@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
@@ -31,6 +32,7 @@ const Header = () => {
           fetchProfile(session.user.id);
         } else {
           setProfile(null);
+          setHasAccess(false);
         }
       }
     );
@@ -88,7 +90,7 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-fisko-beige/95 backdrop-blur-sm border-b border-fisko-blue/20">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-fizko-beige/95 backdrop-blur-sm border-b border-fizko-blue/20">
       <div className="container mx-auto px-4 h-20 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center">
@@ -105,7 +107,7 @@ const Header = () => {
             <a
               key={item.name}
               href={item.href}
-              className="font-montserrat text-base font-medium text-fizko-blue-dark hover:text-fizko-coral transition-colors"
+              className="font-montserrat text-lg font-medium text-fizko-blue-dark hover:text-fizko-coral transition-colors"
             >
               {item.name}
             </a>
@@ -128,50 +130,50 @@ const Header = () => {
                 </Button>
               )}
               <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="relative h-12 w-12 rounded-full">
-                  <Avatar className="h-10 w-10">
-                    <AvatarImage src={getAvatarUrl() || undefined} alt={getDisplayName()} />
-                    <AvatarFallback className="bg-fisko-coral text-white text-sm">
-                      {getInitials()}
-                    </AvatarFallback>
-                  </Avatar>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-64" align="end" forceMount>
-                <div className="flex flex-col space-y-1 p-2">
-                  <p className="font-medium text-sm">{getDisplayName()}</p>
-                  <p className="text-xs text-muted-foreground">{user.email}</p>
-                </div>
-                 <DropdownMenuSeparator />
-                 {hasAccess && (
-                   <DropdownMenuItem onClick={() => navigate('/dashboard')} className="cursor-pointer">
-                     <LayoutDashboard className="mr-2 h-4 w-4" />
-                     Dashboard
-                   </DropdownMenuItem>
-                 )}
-                 <DropdownMenuItem onClick={() => navigate('/profile')} className="cursor-pointer">
-                   <Settings className="mr-2 h-4 w-4" />
-                   Editar perfil
-                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigate('/products')} className="cursor-pointer">
-                  <Package className="mr-2 h-4 w-4" />
-                  Meus produtos
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigate('/support')} className="cursor-pointer">
-                  <HeadphonesIcon className="mr-2 h-4 w-4" />
-                  Suporte
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={handleSignOut} className="cursor-pointer text-red-600">
-                  <LogOut className="mr-2 h-4 w-4" />
-                  Sair
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="relative h-12 w-12 rounded-full">
+                    <Avatar className="h-10 w-10">
+                      <AvatarImage src={getAvatarUrl() || undefined} alt={getDisplayName()} />
+                      <AvatarFallback className="bg-fizko-coral text-white text-sm">
+                        {getInitials()}
+                      </AvatarFallback>
+                    </Avatar>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-64" align="end" forceMount>
+                  <div className="flex flex-col space-y-1 p-2">
+                    <p className="font-medium text-sm">{getDisplayName()}</p>
+                    <p className="text-xs text-muted-foreground">{user.email}</p>
+                  </div>
+                  <DropdownMenuSeparator />
+                  {hasAccess && (
+                    <DropdownMenuItem onClick={() => navigate('/dashboard')} className="cursor-pointer">
+                      <LayoutDashboard className="mr-2 h-4 w-4" />
+                      Dashboard
+                    </DropdownMenuItem>
+                  )}
+                  <DropdownMenuItem onClick={() => navigate('/profile')} className="cursor-pointer">
+                    <Settings className="mr-2 h-4 w-4" />
+                    Editar perfil
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigate('/products')} className="cursor-pointer">
+                    <Package className="mr-2 h-4 w-4" />
+                    Meus produtos
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigate('/support')} className="cursor-pointer">
+                    <HeadphonesIcon className="mr-2 h-4 w-4" />
+                    Suporte
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={handleSignOut} className="cursor-pointer text-red-600">
+                    <LogOut className="mr-2 h-4 w-4" />
+                    Sair
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </>
           ) : (
-            <Button asChild className="bg-fisko-coral hover:bg-fisko-coral/90 text-white font-montserrat text-sm px-6">
+            <Button asChild className="bg-fizko-coral hover:bg-fizko-coral/90 text-white font-montserrat text-lg px-6">
               <a href="/auth">Entrar / Cadastrar</a>
             </Button>
           )}
@@ -184,26 +186,41 @@ const Header = () => {
           className="md:hidden"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
-          {isMenuOpen ? <X className="h-6 w-6 text-fisko-blue-dark" /> : <Menu className="h-6 w-6 text-fisko-blue-dark" />}
+          {isMenuOpen ? <X className="h-6 w-6 text-fizko-blue-dark" /> : <Menu className="h-6 w-6 text-fizko-blue-dark" />}
         </Button>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="absolute top-20 left-0 right-0 bg-fisko-beige border-b border-fisko-blue/20 md:hidden">
+          <div className="absolute top-20 left-0 right-0 bg-fizko-beige border-b border-fizko-blue/20 md:hidden">
             <nav className="container mx-auto px-4 py-6 space-y-4">
               {navigation.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="block font-montserrat text-base font-medium text-fizko-blue-dark hover:text-fizko-coral transition-colors"
+                  className="block font-montserrat text-lg font-medium text-fizko-blue-dark hover:text-fizko-coral transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
                 </a>
               ))}
-              <Button asChild className="w-full bg-fisko-coral hover:bg-fisko-coral/90 text-white font-montserrat text-sm">
-                <a href="/auth">Entrar / Cadastrar</a>
-              </Button>
+              {user ? (
+                hasAccess && (
+                  <Button 
+                    onClick={() => {
+                      navigate('/dashboard');
+                      setIsMenuOpen(false);
+                    }}
+                    className="w-full bg-fizko-coral hover:bg-fizko-coral/90 text-white font-montserrat text-lg"
+                  >
+                    <LayoutDashboard className="w-4 h-4 mr-2" />
+                    DASHBOARD
+                  </Button>
+                )
+              ) : (
+                <Button asChild className="w-full bg-fizko-coral hover:bg-fizko-coral/90 text-white font-montserrat text-lg">
+                  <a href="/auth">Entrar / Cadastrar</a>
+                </Button>
+              )}
             </nav>
           </div>
         )}

@@ -88,7 +88,18 @@ const Auth = () => {
     const checkUser = async () => {
       const { data: { user } } = await supabase.auth.getUser();
       if (user) {
-        navigate("/");
+        // Check if user has subscriptions or is admin
+        const [subscriptions, adminCheck] = await Promise.all([
+          supabase.from('subscriptions').select('*').eq('user_id', user.id),
+          supabase.from('admin_users').select('*').eq('email', user.email).single()
+        ]);
+        
+        // Redirect to dashboard if has access, otherwise to home
+        if (subscriptions.data?.length || adminCheck.data) {
+          navigate("/dashboard");
+        } else {
+          navigate("/");
+        }
       }
     };
     checkUser();
@@ -129,7 +140,7 @@ const Auth = () => {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
-          redirectTo: `${window.location.origin}/`
+          redirectTo: `${window.location.origin}/dashboard`
         }
       });
 
@@ -167,7 +178,20 @@ const Auth = () => {
           variant: "destructive"
         });
       } else {
-        navigate("/");
+        // Check if user has access to redirect to dashboard
+        const { data: { user } } = await supabase.auth.getUser();
+        if (user) {
+          const [subscriptions, adminCheck] = await Promise.all([
+            supabase.from('subscriptions').select('*').eq('user_id', user.id),
+            supabase.from('admin_users').select('*').eq('email', user.email).single()
+          ]);
+          
+          if (subscriptions.data?.length || adminCheck.data) {
+            navigate("/dashboard");
+          } else {
+            navigate("/");
+          }
+        }
       }
     } catch (error) {
       toast({

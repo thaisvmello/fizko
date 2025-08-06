@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
   return (
-    <section id="home" className="pt-20 h-[60vh] flex items-center hexagon-pattern">
+    <section id="home" className="pt-20 h-[50vh] flex items-center hexagon-pattern">
       <div className="container mx-auto px-4 py-12">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           {/* Text Content */}
@@ -20,25 +20,34 @@ const HeroSection = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
                 size="lg" 
-                className="bg-fizko-coral hover:bg-fizko-coral/90 text-white font-montserrat px-8"
+                className="bg-[#4a606b] hover:bg-[#4a606b]/90 text-white font-montserrat px-8"
               >
                 Conhecer Serviços
               </Button>
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="border-fizko-blue text-fizko-blue hover:bg-fizko-blue hover:text-white font-montserrat px-8"
+                className="border-[#4a606b] text-[#4a606b] hover:bg-[#4a606b] hover:text-white font-montserrat px-8"
               >
                 Acessar Tabelas
               </Button>
             </div>
           </div>
 
-          {/* Visual Element */}
+          {/* Visual Element with Image */}
           <div className="relative">
-            <div className="w-full h-80 bg-gradient-to-br from-fizko-blue/20 to-fizko-coral/20 rounded-3xl flex items-center justify-center">
-              <div className="w-48 h-48 bg-fizko-beige rounded-full shadow-2xl flex items-center justify-center">
-                <div className="w-24 h-24 bg-fizko-coral rounded-lg transform rotate-45 opacity-80"></div>
+            <div className="w-full h-80 bg-gradient-to-br from-fizko-blue/20 to-fizko-coral/20 rounded-3xl flex items-center justify-center p-6">
+              <div className="relative w-full h-full">
+                {/* Elegant Frame */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white to-fizko-beige/30 rounded-2xl shadow-2xl border-4 border-fizko-coral/30 transform rotate-1 animate-float"></div>
+                <div className="absolute inset-2 bg-white rounded-xl shadow-lg overflow-hidden transform -rotate-1">
+                  <img 
+                    src="/lovable-uploads/bdd2c740-c3ba-40d8-9125-95336fc1e7b3.png" 
+                    alt="Tabela de produtos fiscais" 
+                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-fizko-blue/20 to-transparent"></div>
+                </div>
               </div>
             </div>
             <div className="absolute -top-4 -right-4 w-12 h-12 bg-fizko-blue rounded-full animate-float"></div>
