@@ -14,7 +14,7 @@ const HeroSection = () => {
         id="home" 
         className="relative pt-20 min-h-[80vh] flex items-center bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `linear-gradient(rgba(237, 232, 219, 0.9), rgba(237, 232, 219, 0.8)), url(${taxSpreadsheetBg})`
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url(/lovable-uploads/96853a44-39b1-4b35-9620-62b36dbd97e3.png)`
         }}
       >
         <div className="container mx-auto px-4 py-12">
@@ -26,17 +26,17 @@ const HeroSection = () => {
                 NOVO: IA fiscal para Simples Nacional
               </Badge>
               
-              {/* Headline */}
-              <h1 className="text-4xl lg:text-6xl font-playfair font-bold leading-tight text-fizko-blue-dark">
-                Automatize sua rotina fiscal com{" "}
-                <span className="text-fizko-coral">inteligência</span>
-              </h1>
-              
-              {/* Description */}
-              <p className="text-lg lg:text-xl text-fizko-blue/80 font-montserrat leading-relaxed max-w-lg">
-                Tabelas tributárias, planilhas inteligentes, consultoria e IA fiscal. 
-                Tudo em um só lugar.
-              </p>
+               {/* Headline */}
+               <h1 className="text-4xl lg:text-6xl font-playfair font-bold leading-tight text-white">
+                 Automatize sua rotina fiscal com{" "}
+                 <span className="text-fizko-coral">inteligência</span>
+               </h1>
+               
+               {/* Description */}
+               <p className="text-lg lg:text-xl text-white/90 font-montserrat leading-relaxed max-w-lg">
+                 Tabelas tributárias, planilhas inteligentes, consultoria e IA fiscal. 
+                 Tudo em um só lugar.
+               </p>
               
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
@@ -58,55 +58,6 @@ const HeroSection = () => {
               </div>
             </div>
 
-            {/* Right Visual Element */}
-            <div className="relative flex justify-center lg:justify-end">
-              <Card className="relative bg-gradient-to-br from-white/90 to-fizko-beige/60 backdrop-blur-sm border-2 border-fizko-coral/20 rounded-3xl p-8 shadow-2xl max-w-md">
-                {/* Chatbot Illustration */}
-                <div className="text-center mb-6">
-                  <img 
-                    src={chatbotIllustration} 
-                    alt="Assistente IA Fiscal" 
-                    className="w-24 h-24 mx-auto mb-4 rounded-2xl shadow-lg"
-                  />
-                  <h3 className="text-lg font-playfair font-bold text-fizko-blue-dark mb-2">
-                    Assistente IA Fiscal
-                  </h3>
-                </div>
-                
-                {/* Sample Tax Info Dialog */}
-                <div className="bg-white rounded-xl p-4 shadow-lg border border-fizko-coral/20">
-                  <div className="space-y-3">
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm font-montserrat font-semibold text-fizko-blue-dark">
-                        Farinha de trigo
-                      </span>
-                      <Badge variant="outline" className="text-xs border-fizko-coral text-fizko-coral">
-                        Consultado
-                      </Badge>
-                    </div>
-                    
-                    <div className="space-y-2 text-sm">
-                      <div className="flex justify-between">
-                        <span className="text-fizko-blue/70">Código:</span>
-                        <span className="font-medium text-fizko-blue-dark">1101001</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-fizko-blue/70">NCM:</span>
-                        <span className="font-medium text-fizko-blue-dark">1101.00.10</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-fizko-blue/70">Alíquota:</span>
-                        <span className="font-bold text-fizko-coral">7%</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Floating Elements */}
-                <div className="absolute -top-3 -right-3 w-6 h-6 bg-fizko-coral rounded-full animate-float"></div>
-                <div className="absolute -bottom-3 -left-3 w-4 h-4 bg-fizko-blue rounded-full animate-float" style={{animationDelay: '1s'}}></div>
-              </Card>
-            </div>
           </div>
         </div>
       </section>
