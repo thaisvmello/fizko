@@ -118,7 +118,7 @@ const Header = () => {
         <div className="hidden md:flex items-center gap-3">
           {user ? (
             <>
-              {hasAccess && (
+              {user && (
                 <Button 
                   variant="outline"
                   size="sm"
@@ -174,7 +174,7 @@ const Header = () => {
             </>
           ) : (
             <Button asChild className="bg-fizko-coral hover:bg-fizko-coral/90 text-white font-montserrat text-lg px-6">
-              <a href="/auth">Entrar / Cadastrar</a>
+              <a href="/auth">ENTRAR / CADASTRAR</a>
             </Button>
           )}
         </div>
@@ -204,21 +204,19 @@ const Header = () => {
                 </a>
               ))}
               {user ? (
-                hasAccess && (
-                  <Button 
-                    onClick={() => {
-                      navigate('/dashboard');
-                      setIsMenuOpen(false);
-                    }}
-                    className="w-full bg-fizko-coral hover:bg-fizko-coral/90 text-white font-montserrat text-lg"
-                  >
-                    <LayoutDashboard className="w-4 h-4 mr-2" />
-                    DASHBOARD
-                  </Button>
-                )
+                <Button 
+                  onClick={() => {
+                    navigate('/dashboard');
+                    setIsMenuOpen(false);
+                  }}
+                  className="w-full bg-fizko-coral hover:bg-fizko-coral/90 text-white font-montserrat text-lg"
+                >
+                  <LayoutDashboard className="w-4 h-4 mr-2" />
+                  DASHBOARD
+                </Button>
               ) : (
                 <Button asChild className="w-full bg-fizko-coral hover:bg-fizko-coral/90 text-white font-montserrat text-lg">
-                  <a href="/auth">Entrar / Cadastrar</a>
+                  <a href="/auth">ENTRAR / CADASTRAR</a>
                 </Button>
               )}
             </nav>

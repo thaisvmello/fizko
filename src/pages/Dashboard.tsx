@@ -269,7 +269,7 @@ const Dashboard = () => {
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-to-br from-fizko-light-gray to-fizko-gray text-white border-none">
+          <Card className="bg-gradient-to-br from-fizko-blue-dark to-fizko-blue text-white border-none">
             <CardHeader className="pb-2">
               <CardTitle className="text-sm font-montserrat">Downloads</CardTitle>
             </CardHeader>
