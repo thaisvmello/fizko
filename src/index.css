@@ -34,6 +34,8 @@
     --fizko-beige: 48 15% 90%; /* #ede8db */
     --fizko-light-gray: 210 9% 82%; /* #cdd1d6 */
     --fizko-gray: 210 9% 62%; /* #9ca3af */
+    /* Auth button brand color (#e57063) as HSL */
+    --auth-orange: 9 71% 65%;
   }
 }
 

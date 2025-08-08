@@ -3,8 +3,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Database, Download, Users, MessageCircle, Star } from "lucide-react";
 import { supabase } from '@/integrations/supabase/client';
 import BotpressChatbot from "@/components/BotpressChatbot";
+import { useNavigate } from "react-router-dom";
 
 const PurchaseSection = () => {
+  const navigate = useNavigate();
   const products = [
     {
       title: "Assistente Fiscal com IA",
@@ -189,7 +191,13 @@ const PurchaseSection = () => {
                   <Button 
                     variant="outline" 
                     className="w-full border-fisko-blue text-fisko-blue hover:bg-fisko-blue hover:text-white font-montserrat text-sm"
-                    onClick={() => handlePurchase(sector.productName)}
+                    onClick={() => {
+                      if (sector.sector === "Hortifruti") {
+                        navigate('/tabelas/hortifruit');
+                      } else {
+                        handlePurchase(sector.productName);
+                      }
+                    }}
                   >
                     Acessar Tabela
                   </Button>

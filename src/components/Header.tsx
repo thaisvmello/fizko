@@ -90,7 +90,7 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-fizko-beige/95 backdrop-blur-sm border-b border-fizko-blue/20">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-fisko-beige/95 backdrop-blur-sm border-b border-fisko-blue/20">
       <div className="container mx-auto px-4 h-20 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center">
@@ -107,7 +107,7 @@ const Header = () => {
             <a
               key={item.name}
               href={item.href}
-              className="font-montserrat text-lg font-medium text-fizko-blue-dark hover:text-fizko-coral transition-colors"
+              className="font-montserrat text-lg font-medium text-fisko-blue-dark hover:text-fisko-coral transition-colors"
             >
               {item.name}
             </a>
@@ -123,7 +123,7 @@ const Header = () => {
                   variant="outline"
                   size="sm"
                   onClick={() => navigate('/dashboard')}
-                  className="border-fizko-coral text-fizko-coral hover:bg-fizko-coral hover:text-white font-montserrat"
+                  className="border-fisko-coral text-fisko-coral hover:bg-fisko-coral hover:text-white font-montserrat"
                 >
                   <LayoutDashboard className="w-4 h-4 mr-2" />
                   DASHBOARD
@@ -134,7 +134,7 @@ const Header = () => {
                   <Button variant="ghost" className="relative h-12 w-12 rounded-full">
                     <Avatar className="h-10 w-10">
                       <AvatarImage src={getAvatarUrl() || undefined} alt={getDisplayName()} />
-                      <AvatarFallback className="bg-fizko-coral text-white text-sm">
+                      <AvatarFallback className="bg-fisko-coral text-white text-sm">
                         {getInitials()}
                       </AvatarFallback>
                     </Avatar>
@@ -173,7 +173,7 @@ const Header = () => {
               </DropdownMenu>
             </>
           ) : (
-            <Button asChild className="bg-fizko-coral hover:bg-fizko-coral/90 text-white font-montserrat text-lg px-6">
+            <Button asChild className="bg-[hsl(var(--auth-orange))] hover:bg-[hsl(var(--auth-orange))]/90 text-white font-montserrat text-lg px-6">
               <a href="/auth">ENTRAR / CADASTRAR</a>
             </Button>
           )}
@@ -186,18 +186,18 @@ const Header = () => {
           className="md:hidden"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
-          {isMenuOpen ? <X className="h-6 w-6 text-fizko-blue-dark" /> : <Menu className="h-6 w-6 text-fizko-blue-dark" />}
+          {isMenuOpen ? <X className="h-6 w-6 text-fisko-blue-dark" /> : <Menu className="h-6 w-6 text-fisko-blue-dark" />}
         </Button>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="absolute top-20 left-0 right-0 bg-fizko-beige border-b border-fizko-blue/20 md:hidden">
+          <div className="absolute top-20 left-0 right-0 bg-fisko-beige border-b border-fisko-blue/20 md:hidden">
             <nav className="container mx-auto px-4 py-6 space-y-4">
               {navigation.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="block font-montserrat text-lg font-medium text-fizko-blue-dark hover:text-fizko-coral transition-colors"
+                  className="block font-montserrat text-lg font-medium text-fisko-blue-dark hover:text-fisko-coral transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
@@ -215,7 +215,7 @@ const Header = () => {
                   DASHBOARD
                 </Button>
               ) : (
-                <Button asChild className="w-full bg-fizko-coral hover:bg-fizko-coral/90 text-white font-montserrat text-lg">
+                <Button asChild className="w-full bg-[hsl(var(--auth-orange))] hover:bg-[hsl(var(--auth-orange))]/90 text-white font-montserrat text-lg">
                   <a href="/auth">ENTRAR / CADASTRAR</a>
                 </Button>
               )}
