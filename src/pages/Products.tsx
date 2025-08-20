@@ -193,10 +193,26 @@ const Products = () => {
                             variant="outline"
                             size="sm"
                             onClick={async () => {
-                              // Implementar portal do cliente Stripe
-                              const response = await supabase.functions.invoke('customer-portal');
-                              if (response.data?.url) {
-                                window.open(response.data.url, '_blank');
+                              try {
+                                // Check if supabase is available
+                                if (!supabase) {
+                                  throw new Error('Serviço temporariamente indisponível');
+                                }
+
+                                const response = await supabase.functions.invoke('customer-portal');
+
+                                if (response.error) {
+                                  throw response.error;
+                                }
+
+                                if (response.data?.url) {
+                                  window.open(response.data.url, '_blank');
+                                } else {
+                                  throw new Error('URL do portal não recebida');
+                                }
+                              } catch (error) {
+                                console.error('Error accessing customer portal:', error);
+                                alert('Erro ao acessar portal do cliente. Tente novamente.');
                               }
                             }}
                           >
