@@ -76,13 +76,13 @@ const Header = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
           {navigation.map((item) => (
-            <a
+            <Link
               key={item.name}
-              href={item.href}
+              to={item.href}
               className="font-montserrat text-lg font-medium text-fisko-blue-dark hover:text-fisko-coral transition-colors"
             >
               {item.name}
-            </a>
+            </Link>
           ))}
         </nav>
 
