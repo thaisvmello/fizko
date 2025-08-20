@@ -187,7 +187,7 @@ const Dashboard = () => {
     <div className="min-h-screen bg-gradient-to-br from-fizko-beige via-background to-fizko-beige/50">
       {/* Header */}
       <header className="bg-white/80 backdrop-blur-sm border-b border-fizko-light-gray/30 sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
+        <div className="container mx-auto px-4 py-4" style={{ backgroundColor: "#f3f3f4" }}>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <img 
