@@ -53,8 +53,25 @@ const Profile = () => {
     // Allow Builder.io to access without auth check
     setLoading(false);
     // Optional: Load dummy data for demo purposes
-    setUser({ id: 'demo-user', email: 'demo@example.com' });
-  }, []);
+    const demoUser = { id: 'demo-user', email: 'demo@example.com' };
+    setUser(demoUser);
+
+    // Set demo profile data
+    const demoProfile = {
+      full_name: "Usuário Demo",
+      email: "demo@example.com",
+      phone: "(11) 99999-9999",
+      cep: "01310-100",
+      street: "Av. Paulista, 1000",
+      neighborhood: "Bela Vista",
+      city: "São Paulo",
+      state: "SP",
+      cpf: "123.456.789-00"
+    };
+
+    setProfile(demoProfile);
+    form.reset(demoProfile);
+  }, [form]);
 
   const fetchProfile = async (userId: string) => {
     const { data, error } = await supabase
