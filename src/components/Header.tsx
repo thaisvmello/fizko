@@ -54,10 +54,11 @@ const Header = () => {
   };
 
   const navigation = [
-    { name: "Início", href: "#home" },
-    { name: "Produtos & Serviços", href: "#services" },
+    { name: "Início", href: "/" },
+    { name: "Produtos", href: "/products" },
     { name: "Sobre", href: "/about" },
     { name: "Contato", href: "/support" },
+    { name: "Dashboard", href: "/dashboard" },
   ];
 
   return (
