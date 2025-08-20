@@ -14,21 +14,20 @@ const Products = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    checkAuth();
-  }, []);
-
-  const checkAuth = async () => {
-    const { data: { session } } = await supabase.auth.getSession();
-    
-    if (!session) {
-      navigate('/auth');
-      return;
-    }
-
-    setUser(session.user);
-    await fetchSubscriptions(session.user.id);
+    // Allow Builder.io to access without auth check
     setLoading(false);
-  };
+    // Optional: Load dummy data for demo purposes
+    setUser({ id: 'demo-user', email: 'demo@example.com' });
+    setSubscriptions([
+      {
+        id: 'demo-sub-1',
+        product_type: 'tabelas',
+        subscription_status: 'active',
+        created_at: new Date().toISOString(),
+        subscription_tier: 'Premium'
+      }
+    ]);
+  }, []);
 
   const fetchSubscriptions = async (userId: string) => {
     const { data, error } = await supabase
