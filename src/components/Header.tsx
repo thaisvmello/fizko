@@ -30,7 +30,7 @@ const Header = () => {
   // Removed fetchProfile for Builder.io compatibility
 
   const handleSignOut = async () => {
-    await supabase.auth.signOut();
+    // Simplified for Builder.io - just navigate to home
     navigate('/');
   };
 
