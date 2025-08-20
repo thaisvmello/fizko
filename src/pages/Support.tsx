@@ -54,11 +54,19 @@ const Support = () => {
     setIsSubmitting(true);
     
     try {
-      const { error } = await supabase.functions.invoke('send-support-email', {
+      // Check if supabase is available
+      if (!supabase) {
+        throw new Error('Serviço temporariamente indisponível');
+      }
+
+      const { data: result, error } = await supabase.functions.invoke('send-support-email', {
         body: data
       });
 
-      if (error) throw error;
+      if (error) {
+        console.error('Support email error:', error);
+        throw error;
+      }
       
       toast({
         title: "Mensagem enviada!",
