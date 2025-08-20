@@ -27,23 +27,7 @@ const Header = () => {
     setHasAccess(true);
   }, []);
 
-  const fetchProfile = async (userId: string) => {
-    const { data } = await supabase
-      .from('profiles')
-      .select('*')
-      .eq('user_id', userId)
-      .maybeSingle();
-    
-    setProfile(data);
-    
-    // Check for subscriptions or admin access
-    const [subscriptions, adminCheck] = await Promise.all([
-      supabase.from('subscriptions').select('*').eq('user_id', userId),
-      supabase.from('admin_users').select('*').eq('email', user?.email).single()
-    ]);
-    
-    setHasAccess(!!(subscriptions.data?.length || adminCheck.data));
-  };
+  // Removed fetchProfile for Builder.io compatibility
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();
