@@ -7,11 +7,12 @@ const HeroSection = () => {
       {/* Gray stripe separator */}
       <div className="h-1 bg-gradient-to-r from-fizko-light-gray/50 via-fizko-gray/30 to-fizko-light-gray/50"></div>
       
-      <section 
-        id="home" 
-        className="relative pt-20 min-h-[80vh] flex items-center bg-cover bg-center bg-no-repeat"
+      <section
+        id="home"
+        className="relative pt-20 flex items-center"
         style={{
-          backgroundImage: `linear-gradient(rgba(240,239,235,0.88), rgba(240,239,235,0.88)), url(/lovable-uploads/8b4350b6-8266-4ec3-b703-bcf1dd1c4e0b.png)`
+          minHeight: "479px",
+          backgroundColor: "#f0e9e4"
         }}
       >
         <div className="container mx-auto px-4 py-12">
