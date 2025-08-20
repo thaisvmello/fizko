@@ -146,7 +146,7 @@ const Header = () => {
             </>
           ) : (
             <Button asChild className="bg-[hsl(var(--auth-orange))] hover:bg-[hsl(var(--auth-orange))]/90 text-white font-montserrat text-lg px-6">
-              <a href="/auth">ENTRAR / CADASTRAR</a>
+              <Link to="/auth">ENTRAR / CADASTRAR</Link>
             </Button>
           )}
         </div>
