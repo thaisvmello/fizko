@@ -9,7 +9,9 @@ window.addEventListener('error', (event) => {
   if (event.filename && (
     event.filename.includes('botpress') ||
     event.filename.includes('cdn.') ||
-    event.filename.includes('external')
+    event.filename.includes('external') ||
+    event.filename.includes('viacep') ||
+    event.filename.includes('supabase.co')
   )) {
     console.warn('External script error detected, but application will continue to function:', event.filename);
     event.preventDefault();
@@ -17,8 +19,21 @@ window.addEventListener('error', (event) => {
   }
 
   // Handle generic script errors that might come from cross-origin sources
-  if (event.message === 'Script error.' && !event.filename) {
-    console.warn('Generic script error detected (likely cross-origin), ignoring to prevent app crash');
+  if ((event.message === 'Script error.' && !event.filename) ||
+      event.message.includes('Script error') ||
+      event.message === '') {
+    console.warn('Generic/cross-origin script error detected, ignoring to prevent app crash');
+    event.preventDefault();
+    return;
+  }
+
+  // Handle fetch/network related errors
+  if (event.error && (
+    event.error.name === 'TypeError' && event.error.message.includes('fetch') ||
+    event.error.name === 'NetworkError' ||
+    event.error.name === 'AbortError'
+  )) {
+    console.warn('Network/fetch error detected, ignoring:', event.error.message);
     event.preventDefault();
     return;
   }
