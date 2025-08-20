@@ -39,7 +39,8 @@ const Support = () => {
 
   useEffect(() => {
     // Allow Builder.io to access without auth check
-    setUser({ id: 'demo-user', email: 'demo@example.com' });
+    const demoUser = { id: 'demo-user', email: 'demo@example.com' };
+    setUser(demoUser);
 
     // Pre-fill with demo data for Builder editing
     form.reset({
@@ -48,7 +49,7 @@ const Support = () => {
       subject: "",
       message: "",
     });
-  }, []);
+  }, [form]);
 
   const onSubmit = async (data: SupportFormData) => {
     setIsSubmitting(true);
