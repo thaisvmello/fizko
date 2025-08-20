@@ -50,21 +50,11 @@ const Profile = () => {
   });
 
   useEffect(() => {
-    checkAuth();
-  }, []);
-
-  const checkAuth = async () => {
-    const { data: { session } } = await supabase.auth.getSession();
-    
-    if (!session) {
-      navigate('/auth');
-      return;
-    }
-
-    setUser(session.user);
-    await fetchProfile(session.user.id);
+    // Allow Builder.io to access without auth check
     setLoading(false);
-  };
+    // Optional: Load dummy data for demo purposes
+    setUser({ id: 'demo-user', email: 'demo@example.com' });
+  }, []);
 
   const fetchProfile = async (userId: string) => {
     const { data, error } = await supabase
