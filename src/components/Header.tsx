@@ -166,14 +166,14 @@ const Header = () => {
           <div className="absolute top-20 left-0 right-0 bg-fisko-beige border-b border-fisko-blue/20 md:hidden">
             <nav className="container mx-auto px-4 py-6 space-y-4">
               {navigation.map((item) => (
-                <a
+                <Link
                   key={item.name}
-                  href={item.href}
+                  to={item.href}
                   className="block font-montserrat text-lg font-medium text-fisko-blue-dark hover:text-fisko-coral transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
-                </a>
+                </Link>
               ))}
               {user ? (
                 <Button 
