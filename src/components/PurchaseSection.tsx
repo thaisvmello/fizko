@@ -53,7 +53,20 @@ const PurchaseSection = () => {
 
   const handlePurchase = async (productTitle: string) => {
     try {
-      const { data: { session } } = await supabase.auth.getSession();
+      // Check if supabase is available
+      if (!supabase) {
+        alert('Serviço temporariamente indisponível. Tente novamente em alguns minutos.');
+        return;
+      }
+
+      const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+
+      if (sessionError) {
+        console.warn('Session error:', sessionError);
+        alert('Erro de autenticação. Tente fazer login novamente.');
+        return;
+      }
+
       if (!session) {
         alert('Você precisa fazer login para realizar uma compra.');
         return;
@@ -61,11 +74,19 @@ const PurchaseSection = () => {
 
       // Find product details
       const product = products.find(p => p.title === productTitle);
-      if (!product) return;
+      if (!product) {
+        alert('Produto não encontrado.');
+        return;
+      }
 
       // Convert price string to number
       const priceMatch = product.price.match(/R\$ ([\d,]+\.?\d*)/);
       const priceAmount = priceMatch ? parseFloat(priceMatch[1].replace(',', '.')) : 0;
+
+      if (priceAmount <= 0) {
+        alert('Erro no valor do produto.');
+        return;
+      }
 
       const { data, error } = await supabase.functions.invoke('create-checkout', {
         body: {
@@ -75,13 +96,20 @@ const PurchaseSection = () => {
         }
       });
 
-      if (error) throw error;
-      
+      if (error) {
+        console.error('Checkout error:', error);
+        throw error;
+      }
+
+      if (!data?.url) {
+        throw new Error('URL de checkout não recebida');
+      }
+
       // Open Stripe checkout in new tab
       window.open(data.url, '_blank');
     } catch (error: any) {
       console.error('Purchase error:', error);
-      alert('Erro ao iniciar compra. Tente novamente.');
+      alert('Erro ao iniciar compra. Tente novamente ou entre em contato com o suporte.');
     }
   };
 
