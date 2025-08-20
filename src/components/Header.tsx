@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
@@ -16,28 +15,16 @@ const Header = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check current session
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setUser(session?.user ?? null);
-      if (session?.user) {
-        fetchProfile(session.user.id);
-      }
-    });
+    // For Builder.io design mode - set demo user
+    const demoUser = {
+      id: 'demo-user',
+      email: 'demo@example.com',
+      user_metadata: { full_name: 'Usuário Demo' }
+    };
 
-    // Listen for auth changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (event, session) => {
-        setUser(session?.user ?? null);
-        if (session?.user) {
-          fetchProfile(session.user.id);
-        } else {
-          setProfile(null);
-          setHasAccess(false);
-        }
-      }
-    );
-
-    return () => subscription.unsubscribe();
+    setUser(demoUser as any);
+    setProfile({ full_name: 'Usuário Demo' });
+    setHasAccess(true);
   }, []);
 
   const fetchProfile = async (userId: string) => {
