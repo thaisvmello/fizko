@@ -66,22 +66,20 @@ const Dashboard = () => {
 
       setUser(demoUser as any);
       
-      // Check admin status
-      const { data: adminData } = await supabase
-        .from('admin_users')
-        .select('*')
-        .eq('email', user.email)
-        .single();
-      
-      setIsAdmin(!!adminData);
-      
-      // Get subscriptions
-      const { data: subsData } = await supabase
-        .from('subscriptions')
-        .select('*')
-        .eq('user_id', user.id);
-      
-      setSubscriptions(subsData || []);
+      // Set demo admin status for Builder
+      setIsAdmin(true);
+
+      // Set demo subscriptions for Builder
+      setSubscriptions([
+        {
+          id: 'demo-sub-1',
+          user_id: 'demo-user',
+          product_type: 'tabelas',
+          subscription_status: 'active',
+          subscription_tier: 'Premium',
+          subscription_end: '2024-12-31'
+        }
+      ]);
       setLoading(false);
     };
 
