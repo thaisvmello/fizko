@@ -244,15 +244,15 @@ const Dashboard = () => {
       <main className="container mx-auto px-4 py-8" style={{ backgroundColor: "#e0e2e4" }}>
         {/* Stats Overview */}
         <div className="grid md:grid-cols-4 gap-6 mb-8">
-          <Card className="bg-gradient-to-br from-fizko-coral to-fizko-coral/80 text-white border-none">
+          <Card className="bg-white border-none">
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-montserrat">Planos Ativos</CardTitle>
+              <CardTitle className="text-sm font-montserrat" style={{ color: "rgba(0, 0, 0, 1)" }}>Planos Ativos</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-playfair font-bold">
+              <div className="text-2xl font-playfair font-bold" style={{ color: "rgba(0, 0, 0, 1)" }}>
                 {isAdmin ? '∞' : subscriptions.length}
               </div>
-              <p className="text-sm opacity-90">
+              <p className="text-sm opacity-90" style={{ color: "rgba(0, 0, 0, 1)" }}>
                 {isAdmin ? 'Acesso Total (Admin)' : 'assinaturas ativas'}
               </p>
             </CardContent>
