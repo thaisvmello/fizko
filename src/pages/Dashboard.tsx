@@ -268,13 +268,13 @@ const Dashboard = () => {
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-to-br from-fizko-blue-dark to-fizko-blue text-white border-none">
+          <Card className="bg-white border-none">
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-montserrat">Downloads</CardTitle>
+              <CardTitle className="text-sm font-montserrat" style={{ color: "rgba(0, 0, 0, 1)" }}>Downloads</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-playfair font-bold">12</div>
-              <p className="text-sm opacity-90">planilhas baixadas</p>
+              <div className="text-2xl font-playfair font-bold" style={{ color: "rgba(0, 0, 0, 1)" }}>12</div>
+              <p className="text-sm opacity-90" style={{ color: "rgba(0, 0, 0, 1)" }}>planilhas baixadas</p>
             </CardContent>
           </Card>
 
