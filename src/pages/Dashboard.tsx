@@ -241,7 +241,7 @@ const Dashboard = () => {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 py-8" style={{ backgroundColor: "#e0e2e4" }}>
         {/* Stats Overview */}
         <div className="grid md:grid-cols-4 gap-6 mb-8">
           <Card className="bg-gradient-to-br from-fizko-coral to-fizko-coral/80 text-white border-none">
