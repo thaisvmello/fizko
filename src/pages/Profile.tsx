@@ -101,7 +101,19 @@ const Profile = () => {
       const cleanCep = cep.replace(/\D/g, '');
       if (cleanCep.length !== 8) return;
 
-      const response = await fetch(`https://viacep.com.br/ws/${cleanCep}/json/`);
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
+
+      const response = await fetch(`https://viacep.com.br/ws/${cleanCep}/json/`, {
+        signal: controller.signal
+      });
+
+      clearTimeout(timeoutId);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
       const data = await response.json();
 
       if (!data.erro) {
