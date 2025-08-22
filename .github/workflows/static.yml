@@ -18,5 +18,6 @@ jobs:
           server: ftp.fizko.com.br
           username: fizko1
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /home/fizko1/public_html/
+          server-dir: public_html/
           local-dir: ./ # ajuste se sua build estiver em outra pasta
+          log-level: verbose
