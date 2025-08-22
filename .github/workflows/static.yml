@@ -1,4 +1,4 @@
-name: Deploy para Locaweb via FTP
+name: Deploy para Locaweb via SFTP
 
 on:
   push:
@@ -12,15 +12,13 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v4
 
-      - name: Deploy via FTP
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+      - name: Deploy via SFTP
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
-          server: ftp.fizko.com.br
           username: fizko1
+          server: ftp.fizko.com.br
+          port: 22
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
-          port: 21
-          server-dir: public_html/
-          local-dir: ./
-          log-level: verbose
-
+          local_path: './*'
+          remote_path: '/home/fizko1/public_html/'
+          sftp_only: true
